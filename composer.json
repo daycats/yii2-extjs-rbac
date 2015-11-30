@@ -9,7 +9,6 @@
   "homepage": "http://www.drupecms/yii2-extjs-rbac",
   "type": "project",
   "license": "MIT",
-  "minimum-stability": "dev",
   "require": {
     "php": ">=5.6.0",
     "yiisoft/yii2": ">=2.0.6"
