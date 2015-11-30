@@ -1,0 +1,38 @@
+# phpstorm project files
+.idea
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+
+# local phpunit config
+/phpunit.xml
+
+### ExtJs template
+.architect
+bootstrap.json
+build/
+ext/
+
+### Yii template
+assets/*
+!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/
+
+# Created by .ignore support plugin (hsz.mobi)
