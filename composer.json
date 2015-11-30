@@ -7,7 +7,7 @@
     "rbac"
   ],
   "homepage": "http://www.drupecms/yii2-extjs-rbac",
-  "type": "project",
+  "type": "yii2-plugin",
   "license": "MIT",
   "require": {
     "php": ">=5.6.0",
