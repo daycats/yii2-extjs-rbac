@@ -12,7 +12,7 @@ Yii2 ExtJs5 RBAC
 执行
 
 ```
-composer require require myweishanli/yii2-extjs-rbac:dev-master
+composer require myweishanli/yii2-extjs-rbac:dev-master
 ```
 或添加
 ```
