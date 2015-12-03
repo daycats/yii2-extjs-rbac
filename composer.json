@@ -18,6 +18,7 @@
       "email": "myweishanli@gmail.com"
     }
   ],
+  "minimum-stability": "dev",
   "require": {
     "php": ">=5.6.0",
     "yiisoft/yii2": ">=2.0.6",
