@@ -16,5 +16,5 @@
   "config": {
     "process-timeout": 1800
   },
-  "target-dir": "./"
+  "vendor-dir": "./"
 }

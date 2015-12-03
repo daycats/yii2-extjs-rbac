@@ -1,13 +1,15 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
+
+use yii\db\ActiveQuery;
 
 /**
  * This is the ActiveQuery class for [[DpAdminMenuUrl]].
  *
  * @see DpAdminMenuUrl
  */
-class DpAdminMenuUrlQuery extends \wsl\db\ActiveQuery
+class DpAdminMenuUrlQuery extends ActiveQuery
 {
     /**
      * @var string 表名
@@ -17,7 +19,7 @@ class DpAdminMenuUrlQuery extends \wsl\db\ActiveQuery
     public function init()
     {
         /**
-         * @var $modelClass DpAdminMenuUrlLink
+         * @var $modelClass DpAdminMenuUrlRelation
          */
         $modelClass = $this->modelClass;
         $this->tableName = $modelClass::tableName();

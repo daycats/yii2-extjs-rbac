@@ -1,11 +1,12 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "{{%admin_menu_url_rule}}".
+ * This is the model class for table "dp_admin_menu_url_rule".
  *
  * @property string $rule_id
  * @property string $url_id
@@ -14,7 +15,7 @@ use Yii;
  * @property string $note
  * @property integer $status
  */
-class DpAdminMenuUrlRule extends \wsl\db\ActiveRecord
+class DpAdminMenuUrlRule extends ActiveRecord
 {
     /**
      * 状态 禁用
@@ -34,7 +35,7 @@ class DpAdminMenuUrlRule extends \wsl\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%admin_menu_url_rule}}';
+        return 'dp_admin_menu_url_rule';
     }
 
     /**
@@ -71,54 +72,10 @@ class DpAdminMenuUrlRule extends \wsl\db\ActiveRecord
      */
     public static function find()
     {
-        return new DpAdminMenuUrlRuleQuery(get_called_class());
+        $find = new DpAdminMenuUrlRuleQuery(get_called_class());
+        $find->normal();
+
+        return $find;
     }
 
-    /**
-     * 获取指定路由id记录
-     *
-     * @param int $ruleId 路由id
-     * @return mixed
-     */
-    public static function getByRuleId($ruleId)
-    {
-        $data = static::find()
-            ->findByRuleId($ruleId)
-            ->asArray()
-            ->one();
-
-        return static::handlerData($data);
-    }
-
-    /**
-     * 获取指定url id记录
-     *
-     * @param int $urlId url id
-     * @return mixed
-     */
-    public static function getByUrlId($urlId)
-    {
-        $data = static::find()
-            ->findByUrlId($urlId)
-            ->asArray()
-            ->one();
-
-        return static::handlerData($data);
-    }
-
-    /**
-     * 获取指定url id所有记录
-     *
-     * @param int $urlId url id
-     * @return mixed
-     */
-    public static function getAllByUrlId($urlId)
-    {
-        $data = static::find()
-            ->findByUrlId($urlId)
-            ->asArray()
-            ->all();
-
-        return static::handlerListData($data);
-    }
 }

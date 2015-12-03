@@ -1,13 +1,15 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
+
+use yii\db\ActiveQuery;
 
 /**
- * This is the ActiveQuery class for [[DpAdminUserMenuLink]].
+ * This is the ActiveQuery class for [[DpAdminUserMenuRelation]].
  *
  * @see DpAdminUserMenuLink
  */
-class DpAdminUserMenuLinkQuery extends \wsl\db\ActiveQuery
+class DpAdminUserMenuRelationQuery extends ActiveQuery
 {
     /*public function inactive()
     {
@@ -59,7 +61,7 @@ class DpAdminUserMenuLinkQuery extends \wsl\db\ActiveQuery
     
     /**
      * @inheritdoc
-     * @return DpAdminUserMenuLink[]|array
+     * @return DpAdminUserMenuRelation[]|array
      */
     public function all($db = null)
     {
@@ -68,7 +70,7 @@ class DpAdminUserMenuLinkQuery extends \wsl\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return DpAdminUserMenuLink|array|null
+     * @return DpAdminUserMenuRelation|array|null
      */
     public function one($db = null)
     {

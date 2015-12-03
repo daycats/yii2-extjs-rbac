@@ -1,23 +1,24 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "{{%admin_group_menu_link}}".
+ * This is the model class for table "dp_admin_group_menu_relation".
  *
  * @property integer $group_id
  * @property integer $menu_id
  */
-class DpAdminGroupMenuLink extends \wsl\db\ActiveRecord
+class DpAdminGroupMenuRelation extends ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%admin_group_menu_link}}';
+        return 'dp_admin_group_menu_relation';
     }
 
     /**
@@ -44,11 +45,11 @@ class DpAdminGroupMenuLink extends \wsl\db\ActiveRecord
 
     /**
      * @inheritdoc
-     * @return DpAdminGroupMenuLinkQuery the active query used by this AR class.
+     * @return DpAdminGroupMenuRelationQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new DpAdminGroupMenuLinkQuery(get_called_class());
+        return new DpAdminGroupMenuRelationQuery(get_called_class());
     }
 
     /**
@@ -64,7 +65,7 @@ class DpAdminGroupMenuLink extends \wsl\db\ActiveRecord
             ->asArray()
             ->one();
 
-        return static::handlerData($data);
+        return $data;
     }
 
     /**
@@ -80,7 +81,7 @@ class DpAdminGroupMenuLink extends \wsl\db\ActiveRecord
             ->asArray()
             ->one();
 
-        return static::handlerData($data);
+        return $data;
     }
 
     /**
@@ -96,26 +97,7 @@ class DpAdminGroupMenuLink extends \wsl\db\ActiveRecord
             ->asArray()
             ->all();
 
-        return static::handlerListData($data);
-    }
-
-    /**
-     * 获取指定用户组id所有菜单id记录
-     *
-     * @param $groupId
-     * @return array
-     */
-    public static function getAllMenuIdArrByGroupId($groupId)
-    {
-        $data = static::getAllByGroupId($groupId);
-        $menuIdArr = [];
-        foreach ($data as $item) {
-            if (DpAdminMenu::getByMenuId($item['menu_id'])) {
-                $menuIdArr[] = $item['menu_id'];
-            }
-        }
-
-        return $menuIdArr;
+        return $data;
     }
 
     /**
@@ -131,7 +113,7 @@ class DpAdminGroupMenuLink extends \wsl\db\ActiveRecord
             ->asArray()
             ->all();
 
-        return static::handlerListData($data);
+        return $data;
     }
 
     /**
@@ -158,5 +140,27 @@ class DpAdminGroupMenuLink extends \wsl\db\ActiveRecord
         return static::deleteAll([
             'menu_id' => $menuId,
         ]);
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public static function getAllMenuIdArrByGroupId($groupId)
+    {
+        $data = static::getAllByGroupId($groupId);
+        $menuIdArr = [];
+        foreach ($data as $item) {
+            $menu = DpAdminMenu::find()
+                ->findByMenuId($item['menu_id'])
+                ->active()
+                ->asArray()
+                ->one();
+            if ($menu) {
+                $menuIdArr[] = $item['menu_id'];
+            }
+        }
+
+        return $menuIdArr;
     }
 }

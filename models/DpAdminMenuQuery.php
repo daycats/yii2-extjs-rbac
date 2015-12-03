@@ -1,13 +1,15 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
+
+use yii\db\ActiveQuery;
 
 /**
  * This is the ActiveQuery class for [[DpAdminMenu]].
  *
  * @see DpAdminMenu
  */
-class DpAdminMenuQuery extends \wsl\db\ActiveQuery
+class DpAdminMenuQuery extends ActiveQuery
 {
     public function inactive()
     {

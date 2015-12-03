@@ -1,11 +1,12 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "{{%admin_menu_url}}".
+ * This is the model class for table "dp_admin_menu_url".
  *
  * @property string $url_id
  * @property string $name
@@ -17,7 +18,7 @@ use Yii;
  * @property integer $note
  * @property integer $status
  */
-class DpAdminMenuUrl extends \wsl\db\ActiveRecord
+class DpAdminMenuUrl extends ActiveRecord
 {
     /**
      * 状态 禁用
@@ -37,7 +38,7 @@ class DpAdminMenuUrl extends \wsl\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%admin_menu_url}}';
+        return 'dp_admin_menu_url';
     }
 
     /**
@@ -76,7 +77,10 @@ class DpAdminMenuUrl extends \wsl\db\ActiveRecord
      */
     public static function find()
     {
-        return new DpAdminMenuUrlQuery(get_called_class());
+        $find = new DpAdminMenuUrlQuery(get_called_class());
+        $find->normal();
+
+        return $find;
     }
 
     /**
@@ -92,7 +96,7 @@ class DpAdminMenuUrl extends \wsl\db\ActiveRecord
             ->asArray()
             ->one();
 
-        return static::handlerData($data);
+        return $data;
     }
 
     /**
@@ -104,14 +108,18 @@ class DpAdminMenuUrl extends \wsl\db\ActiveRecord
     public static function getUrlRuleByMenuIdArr($menuIdArr)
     {
         $urlRuls = [];
-        $urlIdArr = DpAdminMenuUrlLink::getUrlIdArrByMenuIdArr($menuIdArr);
+        $urlIdArr = DpAdminMenuUrlRelation::getUrlIdArrByMenuIdArr($menuIdArr);
         foreach ($urlIdArr as $urlId) {
             $url = static::find()
                 ->findByUrlId($urlId)
+                ->active()
                 ->asArray()
                 ->one();
             if ($url) {
-                $urlRuleAll = DpAdminMenuUrlRule::getAllByUrlId($urlId);
+                $urlRuleAll = DpAdminMenuUrlRule::find()
+                    ->active()
+                    ->findByUrlId($urlId)
+                    ->all();
                 $rule = [];
                 foreach ($urlRuleAll as $item) {
                     $rule[$item['param_name']] = $item['rule'];

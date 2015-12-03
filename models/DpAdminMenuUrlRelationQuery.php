@@ -1,13 +1,15 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
+
+use yii\db\ActiveQuery;
 
 /**
- * This is the ActiveQuery class for [[DpAdminMenuUrlLink]].
+ * This is the ActiveQuery class for [[DpAdminMenuUrlRelation]].
  *
  * @see DpAdminMenuUrlLink
  */
-class DpAdminMenuUrlLinkQuery extends \yii\db\ActiveQuery
+class DpAdminMenuUrlRelationQuery extends ActiveQuery
 {
     /**
      * @var string 表名
@@ -17,7 +19,7 @@ class DpAdminMenuUrlLinkQuery extends \yii\db\ActiveQuery
     public function init()
     {
         /**
-         * @var $modelClass DpAdminMenuUrlLink
+         * @var $modelClass DpAdminMenuUrlRelation
          */
         $modelClass = $this->modelClass;
         $this->tableName = $modelClass::tableName();
@@ -80,7 +82,7 @@ class DpAdminMenuUrlLinkQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return DpAdminMenuUrlLink[]|array
+     * @return DpAdminMenuUrlRelation[]|array
      */
     public function all($db = null)
     {
@@ -89,7 +91,7 @@ class DpAdminMenuUrlLinkQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return DpAdminMenuUrlLink|array|null
+     * @return DpAdminMenuUrlRelation|array|null
      */
     public function one($db = null)
     {

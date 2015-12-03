@@ -1,12 +1,13 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
 
 use Yii;
 use yii\data\Pagination;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "{{%admin_group}}".
+ * This is the model class for table "dp_admin_group".
  *
  * @property integer $group_id
  * @property string $name
@@ -14,7 +15,7 @@ use yii\data\Pagination;
  * @property string $note
  * @property integer $status
  */
-class DpAdminGroup extends \wsl\db\ActiveRecord
+class DpAdminGroup extends ActiveRecord
 {
     /**
      * 状态 禁用
@@ -34,7 +35,7 @@ class DpAdminGroup extends \wsl\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%admin_group}}';
+        return 'dp_admin_group';
     }
 
     /**
@@ -70,7 +71,10 @@ class DpAdminGroup extends \wsl\db\ActiveRecord
      */
     public static function find()
     {
-        return new DpAdminGroupQuery(get_called_class());
+        $find = new DpAdminGroupQuery(get_called_class());
+        $find->normal();
+
+        return $find;
     }
 
     /**
@@ -81,12 +85,12 @@ class DpAdminGroup extends \wsl\db\ActiveRecord
      */
     public static function getByGroupId($groupId)
     {
-        $data =  static::find()
+        $data = static::find()
             ->findByGroupId($groupId)
             ->asArray()
             ->one();
 
-        return static::handlerData($data);
+        return $data;
     }
 
     /**
@@ -100,13 +104,12 @@ class DpAdminGroup extends \wsl\db\ActiveRecord
         $menuIdArr = [];
         foreach ($groupIdArr as $groupId) {
             if (static::getByGroupId($groupId)) {
-                $menuIdArr = array_merge($menuIdArr, DpAdminGroupMenuLink::getAllMenuIdArrByGroupId($groupId));
+                $menuIdArr = array_merge($menuIdArr, DpAdminGroupMenuRelation::getAllMenuIdArrByGroupId($groupId));
             }
         }
 
         return array_unique($menuIdArr);
     }
-
 
     /**
      * 获取列表记录
@@ -118,7 +121,7 @@ class DpAdminGroup extends \wsl\db\ActiveRecord
      * @param int $pageSize 每页数量
      * @return array
      */
-    public static function getListByCondition($condition = '', $params = [], $order = 'group_id desc',$page = 1, $pageSize = 20)
+    public static function getListByCondition($condition = '', $params = [], $order = 'group_id desc', $page = 1, $pageSize = 20)
     {
         $pagination = new Pagination();
         $pagination->setPage($page);
@@ -142,5 +145,21 @@ class DpAdminGroup extends \wsl\db\ActiveRecord
             ],
             'list' => $list,
         ];
+    }
+
+    /**
+     * 获取所有记录
+     *
+     * @param string $order 排序字段
+     * @return array|\wsl\rbac\models\DpAdminGroup[]
+     */
+    public static function getAll($order = 'group_id asc')
+    {
+        $list = static::find()
+            ->orderBy($order)
+            ->asArray()
+            ->all();
+
+        return $list;
     }
 }

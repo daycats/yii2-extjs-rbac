@@ -1,13 +1,15 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
+
+use yii\db\ActiveQuery;
 
 /**
  * This is the ActiveQuery class for [[DpAdminGroup]].
  *
  * @see DpAdminGroup
  */
-class DpAdminGroupQuery extends \wsl\db\ActiveQuery
+class DpAdminGroupQuery extends ActiveQuery
 {
     public function active()
     {

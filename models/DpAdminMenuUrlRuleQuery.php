@@ -1,13 +1,15 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
+
+use yii\db\ActiveQuery;
 
 /**
  * This is the ActiveQuery class for [[DpAdminMenuUrlRule]].
  *
  * @see DpAdminMenuUrlRule
  */
-class DpAdminMenuUrlRuleQuery extends \wsl\db\ActiveQuery
+class DpAdminMenuUrlRuleQuery extends ActiveQuery
 {
     public function active()
     {

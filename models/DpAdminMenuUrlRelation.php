@@ -1,18 +1,20 @@
 <?php
 
-namespace common\models;
+namespace wsl\rbac\models;
 
 use Yii;
+use yii\data\Pagination;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "{{%admin_menu_url_link}}".
+ * This is the model class for table "dp_admin_menu_url_relation".
  *
  * @property string $link_id
  * @property string $menu_id
  * @property string $url_id
  * @property integer $status
  */
-class DpAdminMenuUrlLink extends \wsl\db\ActiveRecord
+class DpAdminMenuUrlRelation extends ActiveRecord
 {
     /**
      * 状态 禁用
@@ -32,7 +34,7 @@ class DpAdminMenuUrlLink extends \wsl\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%admin_menu_url_link}}';
+        return 'dp_admin_menu_url_relation';
     }
 
     /**
@@ -61,11 +63,14 @@ class DpAdminMenuUrlLink extends \wsl\db\ActiveRecord
 
     /**
      * @inheritdoc
-     * @return DpAdminMenuUrlLinkQuery the active query used by this AR class.
+     * @return DpAdminMenuUrlRelationQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new DpAdminMenuUrlLinkQuery(get_called_class());
+        $find = new DpAdminMenuUrlRelationQuery(get_called_class());
+        $find->normal();
+
+        return $find;
     }
 
     /**
@@ -96,7 +101,7 @@ class DpAdminMenuUrlLink extends \wsl\db\ActiveRecord
      * 获取指定菜单id的菜单url一条记录
      *
      * @param int $menuId 菜单url
-     * @return array|DpAdminMenuUrlLink|null
+     * @return array|DpAdminMenuUrlRelation|null
      */
     public static function getUrlByMenuId($menuId)
     {
@@ -117,7 +122,7 @@ class DpAdminMenuUrlLink extends \wsl\db\ActiveRecord
      * 获取指定菜单id的菜单url所有记录
      *
      * @param int $menuId 菜单url
-     * @return array|DpAdminMenuUrlLink|null
+     * @return array|DpAdminMenuUrlRelation|null
      */
     public static function getAllUrlByMenuId($menuId)
     {
@@ -148,6 +153,7 @@ class DpAdminMenuUrlLink extends \wsl\db\ActiveRecord
         foreach ($menuIdArr as $menuId) {
             $link = static::find()
                 ->findByMenuId($menuId)
+                ->active()
                 ->asArray()
                 ->all();
             if ($link) {
@@ -158,5 +164,45 @@ class DpAdminMenuUrlLink extends \wsl\db\ActiveRecord
         }
 
         return array_unique($urlIdArr);
+    }
+
+    /**
+     * 获取列表记录
+     *
+     * @param array|string $condition 条件
+     * @param array $params 参数
+     * @param string $order 排序
+     * @param int $page 页码
+     * @param int $pageSize 每页数量
+     * @return array
+     */
+    public static function getListByCondition($condition = '', $params = [], $order = null, $page = 1, $pageSize = 20)
+    {
+        $pagination = new Pagination();
+        $pagination->setPage($page);
+        $pagination->setPageSize($pageSize);
+        $pagination->totalCount = static::find()
+            ->innerJoinWith('menuUrl')
+            ->andWhere($condition, $params)
+            ->count(1);
+        $list = static::find()
+            ->innerJoinWith('menuUrl')
+            ->andWhere($condition, $params)
+            ->offset($pagination->getOffset() - $pagination->getPageSize())
+            ->limit($pagination->getPageSize())
+            ->orderBy($order)
+            ->asArray()
+            ->all();
+
+        return [
+            'paginationObj' => $pagination,
+            'pagination' => [
+                'currentPage' => $page,
+                'pageSize' => $pageSize,
+                'pageCount' => $pagination->getPageCount(),
+                'totalCount' => $pagination->totalCount,
+            ],
+            'list' => $list,
+        ];
     }
 }
