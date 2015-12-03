@@ -11,6 +11,7 @@ namespace wsl\rbac\modules\admin\controllers;
 
 use wsl\rbac\base\Controller;
 use wsl\rbac\models\DpAdminMenu;
+use yii\helpers\Url;
 use yii\web\Response;
 
 /**
@@ -46,6 +47,29 @@ class CommonController extends Controller
     public function actionUrls()
     {
         $urls = DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, 0);
+
+        $urls = array_merge($urls, [
+            'admin.config.save' => Url::toRoute('/admin/config/save'),
+            'admin.config.options' => Url::toRoute('/admin/config/options'),
+            'admin.group.save' => Url::toRoute('/admin/group/save'),
+            'admin.group.update-status' => Url::toRoute('/admin/group/update-status'),
+            'admin.group.del' => Url::toRoute('/admin/group/del'),
+            'admin.user.save' => Url::toRoute('/admin/user/save'),
+            'admin.user.update-status' => Url::toRoute('/admin/user/update-status'),
+            'admin.user.del' => Url::toRoute('/admin/user/del'),
+            'admin.menu.save' => Url::toRoute('/admin/menu/save'),
+            'admin.menu.update-status' => Url::toRoute('/admin/menu/update-status'),
+            'admin.menu.del' => Url::toRoute('/admin/menu/del'),
+            'admin.menu-url.save' => Url::toRoute('/admin/menu-url/save'),
+            'admin.menu-url.update-status' => Url::toRoute('/admin/menu-url/update-status'),
+            'admin.menu-url.del' => Url::toRoute('/admin/menu-url/del'),
+            'admin.menu-url-link.save' => Url::toRoute('/admin/menu-url-link/save'),
+            'admin.menu-url-link.update-status' => Url::toRoute('/admin/menu-url-link/update-status'),
+            'admin.menu-url-link.del' => Url::toRoute('/admin/menu-url-link/del'),
+            'admin.menu-url-rule.save' => Url::toRoute('/admin/menu-url-rule/save'),
+            'admin.menu-url-rule.update-status' => Url::toRoute('/admin/menu-url-rule/update-status'),
+            'admin.menu-url-rule.del' => Url::toRoute('/admin/menu-url-rule/del'),
+        ], DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, 0));
 
         return [
             'data' => $urls,

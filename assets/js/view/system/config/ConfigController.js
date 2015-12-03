@@ -5,6 +5,6 @@ Ext.define('DP.dp.view.system.config.ConfigController', {
     extend: 'DP.dp.base.FormController',
     alias: 'controller.config',
 
-    saveUrl: getUrl('setting.config.save'),
-    dataUrl: getUrl('setting.config.options')
+    saveUrl: getUrl('admin.config.save'),
+    dataUrl: getUrl('admin.config.options')
 });
