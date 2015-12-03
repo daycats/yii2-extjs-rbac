@@ -143,3 +143,15 @@ CREATE TABLE `dp_admin_user_menu_relation` (
   CONSTRAINT `dp_admin_user_menu_relation_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `dp_admin_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dp_admin_user_menu_relation_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `dp_admin_menu` (`menu_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='admin_user表和admin_menu表的关系表';
+
+-- ----------------------------
+-- Table structure for dp_config
+-- ----------------------------
+DROP TABLE IF EXISTS `dp_config`;
+CREATE TABLE `dp_config` (
+  `name` varchar(255) NOT NULL COMMENT '名称',
+  `value` longtext NOT NULL COMMENT '值',
+  `status` tinyint(255) unsigned NOT NULL DEFAULT '0' COMMENT '状态 0.禁用,1.启用',
+  PRIMARY KEY (`name`),
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配置信息';
