@@ -4,23 +4,25 @@ Yii2 ExtJs5 RBAC
 > 正在完善中...
 > 还有些问题请不要使用
 
-安装步骤
+安装
+------------
+
+安装这个扩展的首选方式是通过 [composer](http://getcomposer.org/download/).
+
+执行
 
 ```
-    ...
-    "require": {
-        ...
-        "myweishanli/yii2-extjs-rbac": "dev-master"
-    }
-    ...
+php composer.phar require myweishanli/yii2-extjs-rbac:dev-master
+```
+或添加
+```
+"myweishanli/yii2-extjs-rbac": "dev-master"
 ```
 
-然后
-```
-$ composer install
-```
+配置
+------------
 
-Yii`@app/config/main.php`配置
+`@app/config/main.php`
 ```php
     'modules' => [
         'admin' => '\wsl\rbac\modules\admin\Module',
@@ -45,7 +47,10 @@ Yii`@app/config/main.php`配置
     ]
 ```
 
-执行数据迁移脚本
+
+导入数据
+------------
+
 ```
-$ yii migrate --migrationPath=@wsl/rbac/migrations
+yii migrate --migrationPath=@wsl/rbac/migrations
 ```
