@@ -1,17 +1,31 @@
 {
   "name": "myweishanli/yii2-extjs-rbac",
-  "description": "Yii 2 extjs 5 rbac",
+  "description": "Yii2 ExtJs5 RBAC",
   "keywords": [
     "yii2",
     "extjs5",
     "rbac"
   ],
-  "homepage": "http://www.drupecms/yii2-extjs-rbac",
-  "type": "yii2-plugin",
+  "homepage": "https://github.com/myweishanli/yii2-extjs-rbac",
+  "type": "yii2-extension",
   "license": "MIT",
+  "support": {
+    "source": "https://github.com/myweishanli/yii2-extjs-rbac"
+  },
+  "authors": [
+    {
+      "name": "ShanLi Wei",
+      "email": "myweishanli@gmail.com"
+    }
+  ],
   "require": {
     "php": ">=5.6.0",
     "yiisoft/yii2": ">=2.0.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "wsl\\rbac\\": ""
+    }
   },
   "config": {
     "process-timeout": 1800
