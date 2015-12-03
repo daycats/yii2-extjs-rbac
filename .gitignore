@@ -21,18 +21,4 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-### ExtJs template
-.architect
-bootstrap.json
-build/
-ext/
-
-### Yii template
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
-
 # Created by .ignore support plugin (hsz.mobi)
