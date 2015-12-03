@@ -24,27 +24,27 @@ composer require require myweishanli/yii2-extjs-rbac:dev-master
 
 `@app/config/main.php`
 ```php
-    'modules' => [
-        'admin' => '\wsl\rbac\modules\admin\Module',
-        ...
-    ],
+'modules' => [
+    'admin' => '\wsl\rbac\modules\admin\Module',
+    ...
+],
 ```
 
 ```php
-    'controllerMap' => [
-        'site' => '\wsl\rbac\controllers\SiteController',
-        ...
-    ],
+'controllerMap' => [
+    'site' => '\wsl\rbac\controllers\SiteController',
+    ...
+],
 ```
 
 ```php
-    'components' => [
-        'user' => [
-            'identityClass' => 'wsl\rbac\models\DpAdminUser',
-            ...
-        ],
+'components' => [
+    'user' => [
+        'identityClass' => 'wsl\rbac\models\DpAdminUser',
         ...
-    ]
+    ],
+    ...
+]
 ```
 
 
