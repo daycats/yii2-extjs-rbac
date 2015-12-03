@@ -99,10 +99,10 @@ Ext.define('DP.dp.view.system.menu.MenuController', {
      * @param node
      * @param data
      * @param overModel
-     * @param dropPosition
+     * @param dragPosition
      * @param eOpts
      */
-    onDrop: function (node, data, overModel, dropPosition, eOpts) {
+    onDrop: function (node, data, overModel, dragPosition, eOpts) {
         var me = this,
             ids = [];
         if (data.records.length) {
@@ -110,9 +110,9 @@ Ext.define('DP.dp.view.system.menu.MenuController', {
                 ids.push(item.get('menu_id'));
             });
             var params = {
-                ids: ids.join(','),
-                position: dropPosition,
-                to_menu_id: overModel.get('menu_id')
+                menu_ids: ids.join(','),
+                position: dragPosition,
+                target_menu_id: overModel.get('menu_id')
             };
 
             Ext.MessageBox.show({

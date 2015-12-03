@@ -49,6 +49,11 @@ class CommonController extends Controller
         $urls = DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, 0);
 
         $urls = array_merge($urls, [
+            'admin.public.login' => Url::toRoute('/admin/public/login'),
+            'admin.public.logout' => Url::toRoute('/admin/public/logout'),
+            'admin.common.tree' => Url::toRoute('/admin/common/tree'),
+            'admin.common.urls' => Url::toRoute('/admin/common/urls'),
+
             'admin.config.save' => Url::toRoute('/admin/config/save'),
             'admin.config.options' => Url::toRoute('/admin/config/options'),
             'admin.group.save' => Url::toRoute('/admin/group/save'),

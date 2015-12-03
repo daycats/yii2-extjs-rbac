@@ -100,6 +100,14 @@ Ext.define('DP.dp.view.navigation.NavigationController', {
         }
     },
 
+    /**
+     * 加载界面事件
+     *
+     * @param me
+     * @param records
+     * @param successful
+     * @param eOpts
+     */
     onLoad: function (me, records, successful, eOpts) {
         var me = this;
         Ext.Ajax.request({
@@ -109,6 +117,16 @@ Ext.define('DP.dp.view.navigation.NavigationController', {
                     var data = Ext.JSON.decode(response.responseText);
                     if (data.data) {
                         urls = data.data;
+                    }
+                    if (window['needActiveTab']) {
+                        window['needActiveTab'] = false;
+                        var defaultToken = Ext.namespace('DP').getApplication().getConfig('defaultToken');
+                        if (defaultToken) {
+                            var node = me.getByTabId(records, defaultToken);
+                            if (node) {
+                                me.activeTab(node.data);
+                            }
+                        }
                     }
                 } catch (e) {
                     me.alert(data.msg);
@@ -123,16 +141,6 @@ Ext.define('DP.dp.view.navigation.NavigationController', {
                 }
             }
         });
-        if (window['needActiveTab']) {
-            window['needActiveTab'] = false;
-            var defaultToken = Ext.namespace('DP').getApplication().getConfig('defaultToken');
-            if (defaultToken) {
-                var node = this.getByTabId(records, defaultToken);
-                if (node) {
-                    this.activeTab(node.data);
-                }
-            }
-        }
     },
 
     onShow: function () {
@@ -172,12 +180,17 @@ Ext.define('DP.dp.view.navigation.NavigationController', {
             isEveryOpen = data['is_every_open'],
             tabId = data['tab_id'],
             viewPackage = data['view_package'],
-            item = data['item'];
-        item = {
-            defaultExtraParams: { // 默认扩展参数
-                level: 1
+            params = data['params'];
+
+        var item = {};
+        if (params) {
+            try {
+                item['params'] = eval('(' + params + ')');
+            } catch (e) {
+                var message = '名称:' + text + '<br>' + '视图名:' + viewPackage + '<br>参数错误信息:<br><b style="color: #f00">' + e.message + '</b>';
+                this.alert(message, 'params设置有误');
             }
-        };
+        }
 
         if (!text) {
             me.alert('菜单：属性：text未设置值');

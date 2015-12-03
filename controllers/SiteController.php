@@ -20,7 +20,12 @@ class SiteController extends Controller
     {
         $this->view->title = $this->getConfig('system.name');
         $user = [];
-        $urls = [];
+        $urls = [
+            'admin.public.login' => Url::toRoute('/admin/public/login'),
+            'admin.public.logout' => Url::toRoute('/admin/public/logout'),
+            'admin.common.tree' => Url::toRoute('/admin/common/tree'),
+            'admin.common.urls' => Url::toRoute('/admin/common/urls'),
+        ];
         if (!Yii::$app->user->isGuest) {
             $groupNames = $this->identity->getGroupNames();
             $user = [
@@ -30,10 +35,6 @@ class SiteController extends Controller
                 'groupName' => join(',', $groupNames),
             ];
             $urls = array_merge($urls, [
-                'admin.public.logout' => Url::toRoute('/admin/public/logout'),
-                'admin.common.tree' => Url::toRoute('/admin/common/tree'),
-                'admin.common.urls' => Url::toRoute('/admin/common/urls'),
-                'admin.public.login' => Url::toRoute('/admin/public/login'),
                 'admin.config.save' => Url::toRoute('/admin/config/save'),
                 'admin.config.options' => Url::toRoute('/admin/config/options'),
             ], DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, 0));

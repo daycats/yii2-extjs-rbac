@@ -122,6 +122,7 @@ class MenuController extends Controller
         $is_every_open = intval(\Yii::$app->request->post('is_every_open'));
         $is_hide = intval(\Yii::$app->request->post('is_hide'));
         $display_order = \Yii::$app->request->post('display_order');
+        $params = \Yii::$app->request->post('params');
         $note = \Yii::$app->request->post('note');
         $status = intval(\Yii::$app->request->post('status'));
 
@@ -153,6 +154,7 @@ class MenuController extends Controller
             'is_every_open' => $is_every_open,
             'is_hide' => $is_hide,
             'display_order' => $display_order,
+            'params' => $params,
             'note' => $note,
             'status' => $status,
         ];

@@ -5,6 +5,7 @@ Ext.define('DP.dp.view.system.menu.MenuFormWindow', {
     extend: 'DP.dp.base.window.Window',
 
     requires: [
+        'DP.dp.store.admin.MenuAll',
         'Ext.form.Panel',
         'Ext.form.RadioGroup',
         'Ext.form.field.ComboBox',
@@ -12,11 +13,10 @@ Ext.define('DP.dp.view.system.menu.MenuFormWindow', {
         'Ext.form.field.Number',
         'Ext.form.field.Text',
         'Ext.form.field.TextArea',
-        'Ext.layout.container.VBox',
-        'DP.dp.store.admin.MenuAll'
+        'Ext.layout.container.VBox'
     ],
 
-    width: 400,
+    width: 500,
     minWidth: 300,
     defaultFocus: 'text',
     reference: 'menu-form-window',
@@ -68,6 +68,11 @@ Ext.define('DP.dp.view.system.menu.MenuFormWindow', {
             fieldLabel: '跳转URL',
             name: 'url',
             vtype: 'url'
+        }, {
+            xtype: 'textareafield',
+            fieldLabel: '参数',
+            name: 'params',
+            emptyText: "view获取方法: this.params\nviewController获取方法: this.getView().params"
         }, {
             xtype: 'textareafield',
             fieldLabel: '备注',

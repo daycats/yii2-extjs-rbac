@@ -22,6 +22,7 @@ Ext.define('DP.dp.model.admin.Menu', {
         {name: 'is_open_target', type: 'boolean'},
         {name: 'is_every_open', type: 'boolean'},
         {name: 'display_order', type: 'int'},
+        {name: 'params', type: 'string'},
         {name: 'note', type: 'string'},
         {name: 'leaf', type: 'boolean'},
         {name: 'is_hide', type: 'boolean'},

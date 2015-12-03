@@ -79,8 +79,8 @@ class DpAdminMenu extends ActiveRecord
         return [
             [['parent_id', 'expanded', 'closable', 'is_folder',  'is_open_url', 'is_open_target', 'is_every_open', 'is_hide', 'display_order', 'status'], 'integer'],
             [['text'], 'required'],
-            [['title', 'url', 'view_package', 'note'], 'default', 'value' => ''],
-            [['text', 'title', 'url', 'view_package'], 'string', 'max' => 255]
+            [['title', 'url', 'view_package', 'params', 'note'], 'default', 'value' => ''],
+            [['text', 'title', 'url', 'view_package', 'params'], 'string', 'max' => 255]
         ];
     }
 
@@ -189,6 +189,7 @@ class DpAdminMenu extends ActiveRecord
                     'is_every_open' => boolval($item['is_every_open']),
                     'is_hide' => boolval($item['is_hide']),
                     'display_order' => $item['display_order'],
+                    'params' => $item['params'],
                     'note' => $item['note'],
                     'status' => intval($item['status']),
                 ];
@@ -248,6 +249,7 @@ class DpAdminMenu extends ActiveRecord
                         'is_every_open' => boolval($item['is_every_open']),
                         'is_hide' => boolval($item['is_hide']),
                         'display_order' => $item['display_order'],
+                        'params' => $item['params'],
                         'note' => $item['note'],
                         'status' => intval($item['status']),
                     ];
