@@ -21,7 +21,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.6.0",
-    "yiisoft/yii2": ">=2.0.6",
+    "yiisoft/yii2-app-advanced": ">=2.0.6",
     "bower-asset/dp-extjs": ">=1.0.0",
     "bower-asset/extjs-extend": ">=1.0.0"
   },
