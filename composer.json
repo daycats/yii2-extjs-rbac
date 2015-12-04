@@ -22,8 +22,7 @@
   "require": {
     "php": ">=5.6.0",
     "yiisoft/yii2": ">=2.0.6",
-    "bower-asset/rbac-extjs-extend": "dev-master",
-    "myweishanli/yii2-extjs-rbac": "dev-master"
+    "bower-asset/rbac-extjs-extend": "dev-master"
   },
   "autoload": {
     "psr-4": {
