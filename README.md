@@ -55,6 +55,13 @@ composer require myweishanli/yii2-extjs-rbac:dev-master
 yii migrate --migrationPath=@wsl/rbac/migrations
 ```
 
+超级管理员帐号和密码
+------------
+```
+username: drupecms
+password: drupecms
+```
+
 控制器
 ------------
 新建的`Controller`需要继承`\wsl\rbac\base\Controller`
