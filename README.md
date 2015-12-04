@@ -1,8 +1,10 @@
 Yii2 ExtJs5 RBAC
 =========
 
-> 正在完善中...
-> 还有些问题请不要使用
+> 注: 功能正在开发中...
+> 更详细的配置说明文档正在编写中...
+> QQ群: 137158108 验证信息: github
+> 有任何疑问可以发邮件到 myweishanli@gmail.com
 
 安装
 ------------
@@ -33,6 +35,19 @@ composer require myweishanli/yii2-extjs-rbac:dev-master
 ```php
 'controllerMap' => [
     'site' => '\wsl\rbac\controllers\SiteController',
+    ...
+],
+```
+>
+自定义`app.js`路径
+```
+'controllerMap' => [
+    'site' => [
+        'class' => '\wsl\rbac\controllers\SiteController',
+        'extJs' => [
+            'appPath' => '/app.js',
+        ],
+    ],
     ...
 ],
 ```
