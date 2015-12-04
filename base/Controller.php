@@ -36,7 +36,7 @@ class Controller extends \yii\web\Controller
      *
      * @var string
      */
-    public $dstPath = '@app/web/app/dp';
+    public $dstPath = '@app/web/dp';
 
     public $maxLimit = 200;
 
@@ -59,7 +59,10 @@ class Controller extends \yii\web\Controller
         $srcDir = Yii::getAlias($this->extJsExtendDir);
         $dstDir = Yii::getAlias($this->dstPath);
         if (!is_dir($dstDir)) {
-            FileHelper::createDirectory(dirname($dstDir));
+            $upDir = dirname($dstDir);
+            if (!is_dir($upDir)) {
+                FileHelper::createDirectory($upDir);
+            }
             symlink($srcDir, $dstDir);
         }
 
