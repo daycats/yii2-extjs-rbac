@@ -11,6 +11,11 @@ use yii\helpers\Url;
  */
 class SiteController extends Controller
 {
+    /**
+     * @var array ExtJs config
+     */
+    public $extJs = [];
+
     public function getViewPath()
     {
         return Yii::getAlias('@wsl/rbac/controllers/views') . DIRECTORY_SEPARATOR . $this->id;
@@ -46,6 +51,7 @@ class SiteController extends Controller
             'config' => $this->config,
             'user' => $user,
             'urls' => $urls,
+            'extJs' => $this->extJs,
         ]);
     }
 

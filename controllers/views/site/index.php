@@ -4,8 +4,10 @@
 /* @var $user array */
 /* @var $isGuest boolean */
 /* @var $loading_text string */
+/* @var $extJs array */
 
 use \yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 ?>
 <!DOCTYPE HTML>
 <html manifest="">
@@ -110,7 +112,7 @@ use \yii\helpers\Html;
 <div id="loading"><?php echo $loading_text ?></div>
 
 <script type="text/javascript" src="/dp/extjs/js/ext-all.js"></script>
-<script type="text/javascript" src="/dp/extjs-extend/app.js"></script>
+<script type="text/javascript" src="<?= ArrayHelper::getValue($extJs, 'appPath', '/dp/extjs-extend/app.js')?>"></script>
 
 </body>
 </html>
