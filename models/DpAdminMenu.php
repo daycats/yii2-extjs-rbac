@@ -221,12 +221,10 @@ class DpAdminMenu extends ActiveRecord
     public static function getAccessTreeByParentId($isSuper, $menuIdList, $parentId, $condition = '', $params = [], $order = 'display_order asc')
     {
         $data = static::find()
-            ->normal()
+            ->active()
             ->findByParentId($parentId)
             ->andWhere($condition, $params)
-            ->active()
             ->orderBy($order)
-            ->asArray()
             ->all();
         $tree = [];
         if ($data) {

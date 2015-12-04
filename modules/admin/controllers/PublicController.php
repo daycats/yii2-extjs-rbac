@@ -9,9 +9,10 @@
 namespace wsl\rbac\modules\admin\controllers;
 
 
-use yii\web\Response;
 use wsl\rbac\base\Controller;
 use wsl\rbac\models\LoginForm;
+use Yii;
+use yii\web\Response;
 
 /**
  * 公开控制器
@@ -39,31 +40,30 @@ class PublicController extends Controller
     public function actionLogin()
     {
         $model = new LoginForm();
-        if ($model->load([
-                'LoginForm' => \Yii::$app->request->post()
-            ]) && $model->login()
-        ) {
-            /* @var $identity \wsl\rbac\models\DpAdminUser */
-            $identity = \Yii::$app->user->identity;
-            $groupNames = $identity->getGroupNames();
-            $user = [
-                'username' => $identity->username,
-                'nickname' => $identity->nickname,
-                'isSuper' => $identity->is_super,
-                'groupName' => join(',', $groupNames),
-            ];
-            return $this->renderSuccess('登录成功', [
-                'user' => $user
-            ]);
-        } else {
-            foreach ($model->getErrors() as $error) {
-                foreach ($error as $msg) {
-                    return $this->renderError($msg);
+        if ($model->load(Yii::$app->request->post(), '')) {
+            if ($model->login()) {
+                /* @var $identity \wsl\rbac\models\DpAdminUser */
+                $identity = Yii::$app->user->identity;
+                $groupNames = $identity->getGroupNames();
+                $user = [
+                    'username' => $identity->username,
+                    'nickname' => $identity->nickname,
+                    'isSuper' => $identity->is_super,
+                    'groupName' => join(',', $groupNames),
+                ];
+                return $this->renderSuccess('登录成功', [
+                    'user' => $user
+                ]);
+            } else {
+                foreach ($model->getErrors() as $error) {
+                    foreach ($error as $msg) {
+                        return $this->renderError($msg);
+                    }
                 }
             }
         }
 
-        return $this->renderError('未知错误');
+        return $this->renderError('非法请求');
     }
 
     /**
@@ -73,7 +73,7 @@ class PublicController extends Controller
      */
     public function actionLogout()
     {
-        \Yii::$app->user->logout();
+        Yii::$app->user->logout();
 
         return $this->renderSuccess('注销成功');
     }

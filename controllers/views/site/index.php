@@ -13,7 +13,8 @@ use \yii\helpers\Html;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <title><?= Html::encode($this->title); ?></title>
-    <script id="microloader" type="text/javascript" src="bootstrap.js"></script>
+    <link rel="stylesheet" href="/dp/extjs/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css">
+    <link rel="stylesheet" href="/dp/extjs/css/font-awesome.min.css">
     <style>
         .main-body {
             background-color: #f1f1f1;
@@ -96,7 +97,7 @@ use \yii\helpers\Html;
          */
         function getUrl(alias) {
             if (undefined === urls[alias]) {
-                Ext.namespace(namespace).getApplication().fireEvent('error', 'URL别名不存在或者权限不足<br>alias:' + alias);
+                Ext.namespace(DP.name).getApplication().fireEvent('error', 'URL别名不存在或者权限不足<br>alias:' + alias);
                 return undefined;
             } else {
                 return urls[alias];
@@ -107,6 +108,9 @@ use \yii\helpers\Html;
 <body class="main-body">
 
 <div id="loading"><?php echo $loading_text ?></div>
+
+<script type="text/javascript" src="/dp/extjs/build/ext-all.js"></script>
+<script type="text/javascript" src="/dp/extjs-extend/app.js"></script>
 
 </body>
 </html>

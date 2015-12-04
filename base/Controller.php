@@ -9,14 +9,14 @@
 namespace wsl\rbac\base;
 
 
-use Yii;
-use yii\helpers\FileHelper;
-use yii\helpers\StringHelper;
-use yii\web\Response;
 use wsl\rbac\models\DpAdminGroup;
 use wsl\rbac\models\DpAdminMenuUrl;
 use wsl\rbac\models\DpAdminUserMenuRelation;
 use wsl\rbac\models\DpConfig;
+use Yii;
+use yii\helpers\FileHelper;
+use yii\helpers\StringHelper;
+use yii\web\Response;
 
 /**
  * 基础控制器
@@ -30,7 +30,7 @@ class Controller extends \yii\web\Controller
      *
      * @var string
      */
-    public $extJsExtendDir = '@wsl/rbac/assets/js';
+    public $extJsExtendDir = '@bower/extjs-extend';
     /**
      * 目标符号连接路径
      *
@@ -58,12 +58,14 @@ class Controller extends \yii\web\Controller
 
         $srcDir = Yii::getAlias($this->extJsExtendDir);
         $dstDir = Yii::getAlias($this->dstPath);
+        $extJsExtendDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs-extend';
         if (!is_dir($dstDir)) {
-            $upDir = dirname($dstDir);
-            if (!is_dir($upDir)) {
-                FileHelper::createDirectory($upDir);
+            if (!is_dir($dstDir)) {
+                FileHelper::createDirectory($dstDir);
             }
-            symlink($srcDir, $dstDir);
+        }
+        if (!is_dir($extJsExtendDir)) {
+            symlink($srcDir, $extJsExtendDir);
         }
 
         $data = DpConfig::find()->all();
@@ -263,7 +265,7 @@ class Controller extends \yii\web\Controller
         }
 
         $return = [
-            'success' => (boolean) $code,
+            'success' => (boolean)$code,
             'msg' => $msg,
         ];
         if ($extraData) {
