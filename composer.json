@@ -24,7 +24,7 @@
     "yiisoft/yii2": ">=2.0.6",
     "yiisoft/yii2-app-advanced": ">=2.0.6",
     "bower-asset/dp-extjs": ">=1.0.0",
-    "bower-asset/extjs-extend": ">=1.0.0"
+    "bower-asset/dp-extjs-extend": ">=1.0.0"
   },
   "autoload": {
     "psr-4": {
@@ -33,5 +33,11 @@
   },
   "config": {
     "process-timeout": 1800
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
   }
 }
