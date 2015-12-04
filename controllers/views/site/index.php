@@ -13,7 +13,7 @@ use \yii\helpers\Html;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <title><?= Html::encode($this->title); ?></title>
-    <link rel="stylesheet" href="/dp/extjs/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css">
+    <link rel="stylesheet" href="/dp/extjs/css/ext-theme-crisp/ext-theme-crisp-all.css">
     <link rel="stylesheet" href="/dp/extjs/css/font-awesome.min.css">
     <style>
         .main-body {
@@ -109,7 +109,7 @@ use \yii\helpers\Html;
 
 <div id="loading"><?php echo $loading_text ?></div>
 
-<script type="text/javascript" src="/dp/extjs/build/ext-all.js"></script>
+<script type="text/javascript" src="/dp/extjs/js/ext-all.js"></script>
 <script type="text/javascript" src="/dp/extjs-extend/app.js"></script>
 
 </body>

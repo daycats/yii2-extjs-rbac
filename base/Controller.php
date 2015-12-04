@@ -26,11 +26,17 @@ use yii\web\Response;
 class Controller extends \yii\web\Controller
 {
     /**
+     * extjs路径
+     *
+     * @var string
+     */
+    public $extJsDir = '@bower/dp-extjs';
+    /**
      * extjs扩展路径
      *
      * @var string
      */
-    public $extJsExtendDir = '@bower/extjs-extend';
+    public $extJsExtendDir = '@bower/dp-extjs-extend';
     /**
      * 目标符号连接路径
      *
@@ -56,16 +62,21 @@ class Controller extends \yii\web\Controller
     {
         parent::init();
 
-        $srcDir = Yii::getAlias($this->extJsExtendDir);
+        $extJsSrcDir = Yii::getAlias($this->extJsDir);
+        $extJsSrcExtendDir = Yii::getAlias($this->extJsExtendDir);
         $dstDir = Yii::getAlias($this->dstPath);
-        $extJsExtendDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs-extend';
+        $extJsDstDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs';
+        $extJsExtendDstDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs-extend';
         if (!is_dir($dstDir)) {
             if (!is_dir($dstDir)) {
                 FileHelper::createDirectory($dstDir);
             }
         }
-        if (!is_dir($extJsExtendDir)) {
-            symlink($srcDir, $extJsExtendDir);
+        if (!is_dir($extJsDstDir)) {
+            symlink($extJsSrcDir, $extJsDstDir);
+        }
+        if (!is_dir($extJsExtendDstDir)) {
+            symlink($extJsSrcExtendDir, $extJsExtendDstDir);
         }
 
         $data = DpConfig::find()->all();
