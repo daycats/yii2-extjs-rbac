@@ -64,3 +64,11 @@ class ExampleController extends \wsl\rbac\base\Controller
 {
 }
 ```
+
+
+Changelog
+------------
+##### Release 1.0 - Changelog
+
+- Official stable release
+
