@@ -258,7 +258,7 @@ INSERT INTO `dp_admin_menu_url_relation` VALUES ('180', '7', '126', '1');
 -- ----------------------------
 -- Records of dp_admin_user
 -- ----------------------------
-INSERT INTO `dp_admin_user` VALUES ('1', 'drupecms', '超级管理员', '$2y$04$bQIfFLv6mC9FVPjfp2UQRelO7qBN8VXFzxgJ9R1FX/6aZs.FZvrUe', '', '', '1', '0', '0', '0', '1', '', '1');
+INSERT INTO `dp_admin_user` VALUES ('1', 'drupecms', '超级管理员', '$2y$13$xRFQW1JJXF.fo.edmy0yLeEbxGpVTZHgjI4yIK.v/EKDMbGRfRIei', '', '', '1', '0', '0', '0', '1', '', '1');
 INSERT INTO `dp_admin_user` VALUES ('2', 'admin', '管理员', '$2y$04$wboExyUgo7AyTa52WxZTHeq5sQgVb7oruegxrgFfPApHhKuqPaaam', '', '', '1', '1', '1', '1', '0', '开发者', '1');
 INSERT INTO `dp_admin_user` VALUES ('3', 'content_mgr', '内容管理员', '$2y$04$RNLkimeGmBEyBDVtw0xGEOm2Q1YHi4PCfAgc5Q4e6p1Fd9ComYGhe', '', '', '3', '0', '0', '0', '0', '运营', '1');
 INSERT INTO `dp_admin_user` VALUES ('4', 'demo', 'demo', '$2y$04$a1SSZm4nZglMOW8syV0WXOgNfQJby0.YL4m2Zaf8AFaewzR9pOBoK', '', '', '4', '0', '0', '0', '0', '演示账号', '1');

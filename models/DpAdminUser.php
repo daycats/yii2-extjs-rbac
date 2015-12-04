@@ -2,6 +2,7 @@
 
 namespace wsl\rbac\models;
 
+use Exception;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\data\Pagination;
@@ -272,7 +273,11 @@ class DpAdminUser extends ActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return Yii::$app->security->validatePassword($password, $this->password_hash);
+        try {
+            return Yii::$app->security->validatePassword($password, $this->password_hash);
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
