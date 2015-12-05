@@ -17,11 +17,11 @@ Yii2 ExtJs5 RBAC
 执行
 
 ```
-composer require myweishanli/yii2-extjs-rbac:dev-master
+composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 或添加
 ```
-"myweishanli/yii2-extjs-rbac": "dev-master"
+"myweishanli/yii2-extjs-rbac": ">=1.0.0"
 ```
 
 配置
