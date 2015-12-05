@@ -59,6 +59,8 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 yii migrate --migrationPath=@wsl/rbac/migrations
 ```
 
+完成`配置`和`导入数据`即可访问
+
 超级管理员帐号和密码
 ------------
 ```
