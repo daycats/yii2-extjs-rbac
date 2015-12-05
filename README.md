@@ -1,5 +1,6 @@
 Yii2 ExtJs5 RBAC
 =========
+支持ACL+RBAC
 
 > 注: 功能正在开发中...
 
