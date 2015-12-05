@@ -15,8 +15,6 @@ use yii\helpers\ArrayHelper;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <title><?= Html::encode($this->title); ?></title>
-    <link rel="stylesheet" href="/dp/extjs/css/ext-theme-crisp/ext-theme-crisp-all.css">
-    <link rel="stylesheet" href="/dp/extjs/css/font-awesome.min.css">
     <style>
         .main-body {
             background-color: #f1f1f1;
@@ -111,8 +109,7 @@ use yii\helpers\ArrayHelper;
 
 <div id="loading"><?php echo $loading_text ?></div>
 
-<script type="text/javascript" src="/dp/extjs/js/ext-all.js"></script>
-<script type="text/javascript" src="<?= ArrayHelper::getValue($extJs, 'appPath', '/dp/extjs-extend/app.js')?>"></script>
+<script type="text/javascript" src="/dp/extjs-extend/bootstrap.js"></script>
 
 </body>
 </html>
