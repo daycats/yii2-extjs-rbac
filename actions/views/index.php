@@ -3,7 +3,8 @@
 /* @var $config array */
 /* @var $user array */
 /* @var $isGuest boolean */
-/* @var $loading_text string */
+/* @var $loadingText string */
+/* @var $urls array */
 
 use \yii\helpers\Html;
 ?>
@@ -12,13 +13,12 @@ use \yii\helpers\Html;
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
-    <title><?= Html::encode($this->title); ?></title>
+    <title><?= Html::encode($this->title) ?></title>
     <script id="microloader" type="text/javascript" src="bootstrap.js"></script>
     <style>
         .main-body {
             background-color: #f1f1f1;
         }
-
         #loading {
             display: block;
             position: absolute;
@@ -39,6 +39,7 @@ use \yii\helpers\Html;
             urls = <?= json_encode($urls)?>,
             user = <?= json_encode($user);?>,
             isGuest = <?= $isGuest ? 'true' : 'false';?>;
+
         /**
          * 获取配置信息
          *
@@ -88,6 +89,7 @@ use \yii\helpers\Html;
 
             return config[name] ? config[name] : null;
         }
+
         /**
          * 获取url
          *
@@ -106,7 +108,7 @@ use \yii\helpers\Html;
 </head>
 <body class="main-body">
 
-<div id="loading"><?php echo $loading_text ?></div>
+<div id="loading"><?= $loadingText ?></div>
 
 </body>
 </html>

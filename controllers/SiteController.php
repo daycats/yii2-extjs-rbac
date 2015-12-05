@@ -47,7 +47,7 @@ class SiteController extends Controller
 
         return $this->renderPartial('index', [
             'isGuest' => Yii::$app->user->isGuest,
-            'loading_text' => $this->getConfig('system.loading_text'),
+            'loadingText' => $this->getConfig('system.loadingText'),
             'config' => $this->config,
             'user' => $user,
             'urls' => $urls,

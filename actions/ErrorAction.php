@@ -12,6 +12,12 @@ namespace wsl\rbac\actions;
 use yii;
 use yii\base\Action;
 
+/**
+ * 错误 action
+ *
+ * @todo 临时方案,此处需要和`controllers/SiteController.php`同步
+ * @package wsl\rbac\actions
+ */
 class ErrorAction extends Action
 {
     public function run()

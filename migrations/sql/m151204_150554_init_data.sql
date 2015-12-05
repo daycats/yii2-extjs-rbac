@@ -268,7 +268,7 @@ INSERT INTO `dp_admin_user` VALUES ('4', 'demo', 'demo', '$2y$04$a1SSZm4nZglMOW8
 -- ----------------------------
 INSERT INTO `dp_config` VALUES ('system.limit', '', '1');
 INSERT INTO `dp_config` VALUES ('system.limitData', '', '1');
-INSERT INTO `dp_config` VALUES ('system.loading_text', '正在努力加载中...请耐心等待。', '1');
+INSERT INTO `dp_config` VALUES ('system.loadingText', '正在努力加载中...请耐心等待。', '1');
 INSERT INTO `dp_config` VALUES ('system.menu.minWidth', '100', '1');
 INSERT INTO `dp_config` VALUES ('system.menu.region', 'west', '1');
 INSERT INTO `dp_config` VALUES ('system.menu.width', '350', '1');

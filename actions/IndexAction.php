@@ -9,10 +9,16 @@
 namespace wsl\rbac\actions;
 
 
+use wsl\rbac\models\DpAdminMenu;
 use Yii;
 use yii\base\Action;
-use wsl\rbac\models\DpAdminMenu;
 
+/**
+ * 首页 action
+ *
+ * @todo 临时方案,此处需要和`controllers/SiteController.php`同步
+ * @package wsl\rbac\actions
+ */
 class IndexAction extends Action
 {
     public function run()
@@ -39,7 +45,7 @@ class IndexAction extends Action
 
         $params = [
             'isGuest' => Yii::$app->user->isGuest,
-            'loading_text' => $controller->getConfig('system.loading_text'),
+            'loadingText' => $controller->getConfig('system.loadingText'),
             'config' => $controller->config,
             'user' => $user,
             'urls' => $urls,

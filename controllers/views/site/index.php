@@ -3,11 +3,11 @@
 /* @var $config array */
 /* @var $user array */
 /* @var $isGuest boolean */
-/* @var $loading_text string */
+/* @var $loadingText string */
 /* @var $extJs array */
+/* @var $urls array */
 
 use \yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 ?>
 <!DOCTYPE HTML>
 <html manifest="">
@@ -35,7 +35,7 @@ use yii\helpers\ArrayHelper;
         }
     </style>
     <script>
-        var namespace = 'DP',
+        var extJsConfig = <?= json_encode($extJs)?>,
             config = <?= json_encode($config);?>,
             urls = <?= json_encode($urls)?>,
             user = <?= json_encode($user);?>,
@@ -107,7 +107,7 @@ use yii\helpers\ArrayHelper;
 </head>
 <body class="main-body">
 
-<div id="loading"><?php echo $loading_text ?></div>
+<div id="loading"><?= $loadingText ?></div>
 
 <script type="text/javascript" src="/dp/extjs-extend/bootstrap.js"></script>
 
