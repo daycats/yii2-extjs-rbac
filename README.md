@@ -22,7 +22,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 或添加
 ```
-"myweishanli/yii2-extjs-rbac": ">=1.0.0"
+"myweishanli/yii2-extjs-rbac": "~1.0.0"
 ```
 
 配置
