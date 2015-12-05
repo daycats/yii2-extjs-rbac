@@ -23,6 +23,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if (!isset($this->extJs['appPath'])) {
+            $this->extJs['appPath'] = 'app.js';
+        }
+
         $this->view->title = $this->getConfig('system.name');
         $user = [];
         $urls = [
