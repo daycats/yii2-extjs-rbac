@@ -91,3 +91,5 @@ class ExampleController extends \wsl\rbac\base\Controller
 ```
 
 [预览图](docs/preview.md)
+
+> 注: 每次升级记住执行`yii migrate --migrationPath=@wsl/rbac/migrations`
