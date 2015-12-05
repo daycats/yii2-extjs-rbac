@@ -167,7 +167,7 @@ INSERT INTO `dp_admin_group_menu_relation` VALUES ('2', '217');
 INSERT INTO `dp_admin_menu` VALUES ('4', '0', '系统管理', '', '', '', null, '1', '1', '0', '0', '0', '0', '0', '3', '', '1');
 INSERT INTO `dp_admin_menu` VALUES ('5', '4', '菜单管理', '', '', 'DP.view.system.menu', null, '1', '1', '0', '0', '0', '0', '0', '1', '', '1');
 INSERT INTO `dp_admin_menu` VALUES ('6', '0', '管理员和权限管理', '', '', '', null, '1', '1', '0', '0', '0', '0', '0', '2', '', '1');
-INSERT INTO `dp_admin_menu` VALUES ('7', '6', '管理员账号', '', '', 'DP.view.admin.user', null, '1', '1', '0', '0', '0', '0', '0', '1', '', '1');
+INSERT INTO `dp_admin_menu` VALUES ('7', '6', '管理员帐号', '', '', 'DP.view.admin.user', null, '1', '1', '0', '0', '0', '0', '0', '1', '', '1');
 INSERT INTO `dp_admin_menu` VALUES ('8', '6', '用户组管理', '', '', 'DP.view.admin.group', null, '1', '1', '0', '0', '0', '0', '0', '1', '', '1');
 INSERT INTO `dp_admin_menu` VALUES ('16', '4', '系统配置', '', '', 'DP.view.system.config', null, '1', '1', '0', '0', '0', '0', '0', '3', '', '1');
 INSERT INTO `dp_admin_menu` VALUES ('22', '4', '菜单所有URL管理', '', '', 'DP.view.system.MenuUrl', null, '1', '1', '0', '0', '0', '0', '0', '4', '', '1');
@@ -261,7 +261,7 @@ INSERT INTO `dp_admin_menu_url_relation` VALUES ('180', '7', '126', '1');
 INSERT INTO `dp_admin_user` VALUES ('1', 'drupecms', '超级管理员', '$2y$13$xRFQW1JJXF.fo.edmy0yLeEbxGpVTZHgjI4yIK.v/EKDMbGRfRIei', '', '', '1', '0', '0', '0', '1', '', '1');
 INSERT INTO `dp_admin_user` VALUES ('2', 'admin', '管理员', '$2y$04$wboExyUgo7AyTa52WxZTHeq5sQgVb7oruegxrgFfPApHhKuqPaaam', '', '', '1', '1', '1', '1', '0', '开发者', '1');
 INSERT INTO `dp_admin_user` VALUES ('3', 'content_mgr', '内容管理员', '$2y$04$RNLkimeGmBEyBDVtw0xGEOm2Q1YHi4PCfAgc5Q4e6p1Fd9ComYGhe', '', '', '3', '0', '0', '0', '0', '运营', '1');
-INSERT INTO `dp_admin_user` VALUES ('4', 'demo', 'demo', '$2y$04$a1SSZm4nZglMOW8syV0WXOgNfQJby0.YL4m2Zaf8AFaewzR9pOBoK', '', '', '4', '0', '0', '0', '0', '演示账号', '1');
+INSERT INTO `dp_admin_user` VALUES ('4', 'demo', 'demo', '$2y$04$a1SSZm4nZglMOW8syV0WXOgNfQJby0.YL4m2Zaf8AFaewzR9pOBoK', '', '', '4', '0', '0', '0', '0', '演示帐号', '1');
 
 -- ----------------------------
 -- Records of dp_config
