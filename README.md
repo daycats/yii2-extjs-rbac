@@ -42,19 +42,6 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
     ...
 ],
 ```
->
-自定义`app.js`路径
-```
-'controllerMap' => [
-    'site' => [
-        'class' => '\wsl\rbac\controllers\SiteController',
-        'extJs' => [
-            'appPath' => '/app.js',
-        ],
-    ],
-    ...
-],
-```
 
 ```php
 'components' => [
@@ -66,10 +53,8 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ]
 ```
 
-
 导入数据
 ------------
-
 ```
 yii migrate --migrationPath=@wsl/rbac/migrations
 ```
@@ -89,6 +74,22 @@ password: drupecms
 class ExampleController extends \wsl\rbac\base\Controller
 {
 }
+```
+
+自定义配置
+------------
+> 如果需要自定义`ExtJs`的`app.js`路径
+
+```
+'controllerMap' => [
+    'site' => [
+        'class' => '\wsl\rbac\controllers\SiteController',
+        'extJs' => [
+            'appPath' => '/app.js',
+        ],
+    ],
+    ...
+],
 ```
 
 [预览图](docs/preview.md)
