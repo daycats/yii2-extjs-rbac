@@ -80,8 +80,6 @@ username: drupecms
 password: drupecms
 ```
 
-[预览图](docs/preview.md)
-
 控制器
 ------------
 新建的`Controller`需要继承`\wsl\rbac\base\Controller`
@@ -91,3 +89,5 @@ class ExampleController extends \wsl\rbac\base\Controller
 {
 }
 ```
+
+[预览图](docs/preview.md)
