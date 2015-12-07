@@ -40,28 +40,6 @@ class DpAdminMenu extends ActiveRecord
      * 状态 删除
      */
     const STATUS_DELETE = 2;
-    /**
-     * @see DpAdminMenu::$expanded 对应名称
-     */
-    const EXPANDED = [
-        '0' => '否',
-        '1' => '是',
-    ];
-    /**
-     * @see DpAdminMenu::$closable 对应名称
-     */
-    const CLOSABLE = [
-        '0' => '否',
-        '1是' => '',
-    ];
-    /**
-     * @see DpAdminMenu::$status 对应名称
-     */
-    const STATUS = [
-        '0' => '禁用',
-        '1' => '启用',
-        '2' => '删除',
-    ];
 
     /**
      * @inheritdoc
