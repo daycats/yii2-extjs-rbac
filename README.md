@@ -103,3 +103,9 @@ class ExampleController extends \wsl\rbac\base\Controller
 > 更多示例正在添加中...
 
 * [编写一个Hello World](docs/example/hello-world/hello-world.md)
+* [自定义命名空间](docs/example/custom-namespace/custom-namespace.md)
+
+**正在编写**
+* 目录结构说明
+* 使用已封装CRUD
+* 扩展功能
