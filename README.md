@@ -34,6 +34,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 反之你访问的是`frontend/web/index.php`那么你就配置`frontend/config/main.php`即可
 
 高级版是`main.php`
+
 基础版是`web.php`
 
 ```php
