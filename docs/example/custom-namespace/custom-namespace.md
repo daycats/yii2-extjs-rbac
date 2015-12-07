@@ -7,6 +7,7 @@
 > 此处以网站根目录的`app.js`为例
 
 配置`@app/config/main.php`文件
+
 ```
 'controllerMap' => [
     'site' => [
@@ -38,3 +39,7 @@ Ext.application({
 });
 
 ```
+
+**目录结构**
+
+![](directory-structure.png)
