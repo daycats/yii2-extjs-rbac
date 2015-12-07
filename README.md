@@ -29,6 +29,10 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ------------
 
 `@app/config/main.php`
+
+`@app`指你应用的目录 比如你访问的是`backend/web/index.php`那么你就配置`backend/config/main.php`即可
+反之你访问的是`frontend/web/index.php`那么你就配置`frontend/config/main.php`即可
+
 ```php
 'modules' => [
     'admin' => '\wsl\rbac\modules\admin\Module',
