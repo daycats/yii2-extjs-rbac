@@ -44,14 +44,6 @@ class DpAdminUser extends ActiveRecord implements IdentityInterface
      * 状态 删除
      */
     const STATUS_DELETE = 3;
-    /**
-     * @see DpAdminUser::$status 对应名称
-     */
-    const STATUS = [
-        '0' => '禁用',
-        '1' => '启用',
-        '2' => '删除',
-    ];
 
     /**
      * @var string 原始密码
