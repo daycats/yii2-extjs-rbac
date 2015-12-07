@@ -25,7 +25,8 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 "myweishanli/yii2-extjs-rbac": "~1.0.0"
 ```
 
-由于中国的网络特殊原因composer始终安装不了可以选择安装包(百度网盘)[http://pan.baidu.com/s/1bonLAph#path=%252Fyii2-extjs-rbac]
+由于中国的网络特殊原因composer始终安装不了可以选择安装包
+(百度网盘)[http://pan.baidu.com/s/1bonLAph#path=/yii2-extjs-rbac]
 安装包下载到项目根目录解压到当前文件夹
 然后可以跳过`composer`步骤
 
