@@ -68,6 +68,7 @@ class Controller extends \yii\web\Controller
         $extJsDstDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs';
         $extJsExtendDstDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs-extend';
         if (!is_dir($dstDir)) {
+            @rmdir($dstDir);
             if (!is_dir($dstDir)) {
                 FileHelper::createDirectory($dstDir);
             }
