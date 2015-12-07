@@ -97,3 +97,9 @@ class ExampleController extends \wsl\rbac\base\Controller
 [预览图](docs/preview.md)
 
 > 注: 每次升级记住执行`yii migrate --migrationPath=@wsl/rbac/migrations`
+
+示例:
+------------
+> 更多示例正在添加中...
+
+* [编写一个Hello World](docs/example/hello-world/hello-world.md)
