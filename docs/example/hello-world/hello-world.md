@@ -1,11 +1,11 @@
 Hello World
 =========
 
-添加菜单
+娣诲姞鑿滃崟
 
 ![](add-menu.png)
 
-`app/view/hello/Hello.js`文件代码
+`app/view/hello/Hello.js`鏂囦欢浠ｇ爜
 ```javascript
 Ext.define('MyApp.view.hello.Hello', {
     extend: 'Ext.panel.Panel',
@@ -13,10 +13,10 @@ Ext.define('MyApp.view.hello.Hello', {
 });
 ```
 
-目录结构
+鐩綍缁撴瀯
 
 ![](directory-structure.png)
 
-效果预览
+鏁堟灉棰勮
 
 ![](preview.png)
