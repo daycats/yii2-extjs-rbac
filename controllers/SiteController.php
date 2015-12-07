@@ -11,10 +11,6 @@ use yii\helpers\Url;
  */
 class SiteController extends Controller
 {
-    /**
-     * @var array ExtJs config
-     */
-    public $extJs = [];
 
     public function getViewPath()
     {
@@ -23,10 +19,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        if (!isset($this->extJs['appPath'])) {
-            $this->extJs['appPath'] = '/dp/extjs-extend/app.js';
-        }
-
         $this->view->title = $this->getConfig('system.name');
         $user = [];
         $urls = [

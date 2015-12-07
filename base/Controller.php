@@ -14,8 +14,10 @@ use wsl\rbac\models\DpAdminMenuUrl;
 use wsl\rbac\models\DpAdminUserMenuRelation;
 use wsl\rbac\models\DpConfig;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
+use yii\helpers\VarDumper;
 use yii\web\Response;
 
 /**
@@ -26,28 +28,40 @@ use yii\web\Response;
 class Controller extends \yii\web\Controller
 {
     /**
-     * extjs路径
-     *
-     * @var string
+     * @var string extjs路径
      */
-    public $extJsDir = '@bower/dp-extjs';
+    protected $srcExtJsDir = '@bower/dp-extjs';
     /**
-     * extjs扩展路径
-     *
-     * @var string
+     * @var string extjs扩展路径
      */
-    public $extJsExtendDir = '@bower/dp-extjs-extend';
+    protected $srcExtJsExtendDir = '@bower/dp-extjs-extend';
     /**
-     * 目标符号连接路径
+     * @var array ExtJs配置
      *
-     * @var string
+     *```php
+     * [
+     *  'path' => '', // ExtJs符号连接路径
+     *  'extendPath' => '', // ExtJs扩展符号连接路径
+     *  'appJsPath' => '', // app.js路径
+     *  'bootstrapJsPath' => '', // bootstrap.js路径
+     *  'bootstrapJsonPath' => '', // bootstrap.json路径
+     *  'bootstrapCssPath' => '', // bootstrap.css路径
+     * ]
+     *```
      */
-    public $dstPath = '@app/web/dp';
+    public $extJs = [];
 
+    /**
+     * @var int 最大页码限制
+     */
     public $maxLimit = 200;
-
+    /**
+     * @var string 输出数据格式化类型
+     */
     public $format = null;
-
+    /**
+     * @var array 系统配置
+     */
     public $config = [];
     /**
      * @var \wsl\rbac\models\DpAdminUser
@@ -61,18 +75,34 @@ class Controller extends \yii\web\Controller
     public function init()
     {
         parent::init();
-
-        $extJsSrcDir = Yii::getAlias($this->extJsDir);
-        $extJsSrcExtendDir = Yii::getAlias($this->extJsExtendDir);
-        $dstDir = Yii::getAlias($this->dstPath);
-        $extJsDstDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs';
-        $extJsExtendDstDir = $dstDir . DIRECTORY_SEPARATOR . 'extjs-extend';
-        if (!is_dir($dstDir)) {
-            @rmdir($dstDir);
-            if (!is_dir($dstDir)) {
-                FileHelper::createDirectory($dstDir);
+        // 默认配置
+        $this->extJs['path'] = ArrayHelper::getValue($this->extJs, 'path', '/dp/extjs');
+        $this->extJs['extendPath'] = ArrayHelper::getValue($this->extJs, 'extendPath', '/dp/extjs-extend');
+        $this->extJs['appJsPath'] = ArrayHelper::getValue($this->extJs, 'appJsPath', $this->extJs['extendPath'] . '/app.js');
+        $this->extJs['bootstrapJsPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsPath', $this->extJs['extendPath'] . '/bootstrap.js');
+        $this->extJs['bootstrapJsonPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsonPath', $this->extJs['extendPath'] . '/bootstrap.json');
+        $this->extJs['bootstrapCssPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapCssPath', $this->extJs['path'] . '/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css');
+        // js路径
+        $extJsSrcDir = Yii::getAlias($this->srcExtJsDir);
+        $extJsSrcExtendDir = Yii::getAlias($this->srcExtJsExtendDir);
+        $extJsDstDir = Yii::getAlias('@app/web/' . $this->extJs['path']);
+        $extJsExtendDstDir = Yii::getAlias('@app/web/' . $this->extJs['extendPath']);
+        // 创建符号连接所需的目录
+        $extJsDstUpDir = dirname($extJsDstDir);
+        if (!is_dir($extJsDstUpDir)) {
+            @rmdir($extJsDstUpDir);
+            if (!is_dir($extJsDstUpDir)) {
+                FileHelper::createDirectory($extJsDstUpDir);
             }
         }
+        $extJsExtendDstUpDir = dirname($extJsExtendDstDir);
+        if (!is_dir($extJsExtendDstUpDir)) {
+            @rmdir($extJsExtendDstUpDir);
+            if (!is_dir($extJsExtendDstUpDir)) {
+                FileHelper::createDirectory($extJsExtendDstUpDir);
+            }
+        }
+        // js目录创建符号连接
         if (!is_dir($extJsDstDir)) {
             symlink($extJsSrcDir, $extJsDstDir);
         }

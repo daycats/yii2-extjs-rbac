@@ -109,7 +109,7 @@ use \yii\helpers\Html;
 
 <div id="loading"><?= $loadingText ?></div>
 
-<script type="text/javascript" src="/dp/extjs-extend/bootstrap.js"></script>
+<script type="text/javascript" src="<?= $extJs['bootstrapJsPath'] ?>"></script>
 
 </body>
 </html>

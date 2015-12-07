@@ -14,8 +14,10 @@ use wsl\rbac\helpers\ExtHelpers;
 use wsl\rbac\models\DpAdminGroup;
 use wsl\rbac\models\DpAdminGroupMenuRelation;
 use wsl\rbac\models\DpAdminMenu;
+use wsl\rbac\models\DpAdminMenuForm;
 use wsl\rbac\models\DpAdminUser;
 use wsl\rbac\models\DpAdminUserMenuRelation;
+use Yii;
 use yii\helpers\StringHelper;
 use yii\web\Response;
 
@@ -108,23 +110,23 @@ class MenuController extends Controller
      */
     public function actionSave()
     {
-        $menu_id = \Yii::$app->request->post('menu_id');
-        $parent_id = intval(\Yii::$app->request->post('parent_id'));
-        $text = \Yii::$app->request->post('origin_text');
-        $title = \Yii::$app->request->post('title');
-        $url = \Yii::$app->request->post('url');
-        $view_package = \Yii::$app->request->post('view_package');
-        $expanded = intval(\Yii::$app->request->post('is_expand'));
-        $closable = intval(\Yii::$app->request->post('closable'));
-        $is_folder = intval(\Yii::$app->request->post('is_folder'));
-        $is_open_url = intval(\Yii::$app->request->post('is_open_url'));
-        $is_open_target = intval(\Yii::$app->request->post('is_open_target'));
-        $is_every_open = intval(\Yii::$app->request->post('is_every_open'));
-        $is_hide = intval(\Yii::$app->request->post('is_hide'));
-        $display_order = \Yii::$app->request->post('display_order');
-        $params = \Yii::$app->request->post('params');
-        $note = \Yii::$app->request->post('note');
-        $status = intval(\Yii::$app->request->post('status'));
+        $menu_id = Yii::$app->request->post('menu_id');
+        $parent_id = intval(Yii::$app->request->post('parent_id'));
+        $text = Yii::$app->request->post('origin_text');
+        $title = Yii::$app->request->post('title');
+        $url = Yii::$app->request->post('url');
+        $view_package = Yii::$app->request->post('view_package');
+        $expanded = intval(Yii::$app->request->post('is_expand'));
+        $closable = intval(Yii::$app->request->post('closable'));
+        $is_folder = intval(Yii::$app->request->post('is_folder'));
+        $is_open_url = intval(Yii::$app->request->post('is_open_url'));
+        $is_open_target = intval(Yii::$app->request->post('is_open_target'));
+        $is_every_open = intval(Yii::$app->request->post('is_every_open'));
+        $is_hide = intval(Yii::$app->request->post('is_hide'));
+        $display_order = Yii::$app->request->post('display_order');
+        $params = Yii::$app->request->post('params');
+        $note = Yii::$app->request->post('note');
+        $status = intval(Yii::$app->request->post('status'));
 
         if ($parent_id) {
             if ($parent_id == $menu_id) {
@@ -221,100 +223,20 @@ class MenuController extends Controller
      */
     public function actionDrop()
     {
-        $ids = \Yii::$app->request->post('ids'); // 移动的菜单id集
-        $position = \Yii::$app->request->post('position'); // 位置 before.前插入,after.后插入
-        $toMenuId = \Yii::$app->request->post('to_menu_id'); // 移动目标的菜单id
-
-        $toMenu = DpAdminMenu::getByMenuId($toMenuId);
-        if (!$toMenu) {
-            return $this->renderError('菜单不存在');
-        }
-        // 调整排序的菜单id
-        $dropMenuIdArr = array_filter(StringHelper::explode($ids, ',', true, true), function ($value) {
-            return is_numeric($value) && DpAdminMenu::getByMenuId($value);
-        });
-        // 调整排序菜单数量
-        $dropCount = count($dropMenuIdArr);
-        if ('before' == $position) {
-            // 在菜单前插入
-            $menuAllObj = DpAdminMenu::find()
-                ->findByParentId($toMenu['parent_id'])
-                ->orderBy('display_order asc')
-                ->all();
-            // 将要插入的菜单前面的排序向前移动
-            // 插入的开始排序号
-            $startOrder = $toMenu['display_order'] - 1;
-            $otherStartOrder = $startOrder - $dropCount;
-            foreach ($menuAllObj as $menuObj) {
-                if ($menuObj->menu_id == $toMenu['menu_id']) {
-                    break;
-                }
-                $menuObj->display_order = $otherStartOrder--;
-                $menuObj->save();
+        $formModel = new DpAdminMenuForm();
+        $formModel->setScenario($formModel::SCENARIO_DRAG_SORT);
+        if ($formModel->load(Yii::$app->request->post(), '')) {
+            if ($formModel->dragSort()) {
+                return $this->renderSuccess('排序调整成功');
             }
-            $dropStartOrder = $toMenu['display_order'] - $dropCount;
-            foreach ($dropMenuIdArr as $menuId) {
-                $dropMenu = DpAdminMenu::find()
-                    ->findByMenuId($menuId)
-                    ->one();
-                if ($dropMenu) {
-                    $dropMenu->parent_id = $toMenu['parent_id'];
-                    $dropMenu->display_order = $dropStartOrder++;
-                    $dropMenu->save();
+            foreach ($formModel->errors as $field) {
+                foreach ($field as $message) {
+                    return $this->renderError($message);
                 }
             }
-        } elseif ('after' == $position) {
-            // 在菜单后插入
-            $menuAllObj = DpAdminMenu::find()
-                ->findByParentId($toMenu['parent_id'])
-                ->andWhere('menu_id not in (' . join(',', $dropMenuIdArr) . ')')
-                ->all();
-            // 将要插入的菜单后面的排序向后移动
-            // 插入的开始排序号
-            $isStartOrder = false;
-            $startOrder = $toMenu['display_order'] + 1;
-            $otherStartOrder = $startOrder + $dropCount;
-            foreach ($menuAllObj as $menuObj) {
-                if ($menuObj->menu_id == $toMenu['menu_id']) {
-                    $isStartOrder = true;
-                    continue;
-                }
-                if (!$isStartOrder) {
-                    continue;
-                }
-                $menuObj->display_order = $otherStartOrder++;
-                $menuObj->save();
-            }
-            foreach ($dropMenuIdArr as $menuId) {
-                $dropMenu = DpAdminMenu::find()
-                    ->findByMenuId($menuId)
-                    ->one();
-                if ($dropMenu) {
-                    $dropMenu->parent_id = $toMenu['parent_id'];
-                    $dropMenu->display_order = $startOrder++;
-                    $dropMenu->save();
-                }
-            }
-        } elseif ('append' == $position) {
-            // 添加为子节点
-            $maxDisplayOrder = DpAdminMenu::find()
-                ->findByParentId($toMenu['menu_id'])
-                ->max('display_order');
-            foreach ($dropMenuIdArr as $menuId) {
-                $dropMenu = DpAdminMenu::find()
-                    ->findByMenuId($menuId)
-                    ->one();
-                if ($dropMenu) {
-                    $dropMenu->parent_id = $toMenu['menu_id'];
-                    $dropMenu->display_order = ++$maxDisplayOrder;
-                    $dropMenu->save();
-                }
-            }
-        } else {
-            return $this->renderError('未知插入位置');
         }
 
-        return $this->renderSuccess('排序调整成功');
+        return $this->renderError('未知错误');
     }
 
     /**
@@ -324,7 +246,7 @@ class MenuController extends Controller
      */
     public function actionDel()
     {
-        $ids = \Yii::$app->request->post('ids');
+        $ids = Yii::$app->request->post('ids');
         foreach (StringHelper::explode($ids, ',', true, true) as $id) {
             $obj = DpAdminMenu::find()
                 ->findByMenuId($id)
@@ -345,8 +267,8 @@ class MenuController extends Controller
      */
     public function actionUpdateStatus()
     {
-        $ids = \Yii::$app->request->post('ids');
-        $status = intval(\Yii::$app->request->post('status'));
+        $ids = Yii::$app->request->post('ids');
+        $status = intval(Yii::$app->request->post('status'));
         if ($status != 0) {
             $status = 1;
         }
