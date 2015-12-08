@@ -1,8 +1,10 @@
 自定义命名空间
 =========
 
-配置`app.js`文件路径
+配置
 ------------
+
+> 此处以网站根目录的`app.js`为例
 
 `@app/config/main.php`
 
@@ -17,13 +19,8 @@
 'controllerMap' => [
     'site' => [
         'class' => '\wsl\rbac\controllers\SiteController',
-        'extJs' => [ // 按需配置,未配置的key会使用默认值
-            'path' => '/dp/extjs', // ExtJs符号连接路径
-            'extendPath' => '/dp/extjs-extend', // ExtJs扩展符号连接路径
-            'appJsPath' => '/app.js', // app.js路径
-            'bootstrapJsPath' => '/dp/extjs-extend/bootstrap.js', // bootstrap.js路径
-            'bootstrapJsonPath' => '/dp/extjs-extend/bootstrap.json', // bootstrap.json路径
-            'bootstrapCssPath' => '/dp/extjs/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css', // bootstrap.css路径
+        'extJs' => [
+            'path' => '/app.js',
         ],
     ],
     ...
