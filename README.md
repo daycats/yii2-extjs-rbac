@@ -21,6 +21,7 @@ Yii2 ExtJs5 RBAC
 composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 或添加
+
 ```
 "myweishanli/yii2-extjs-rbac": "~1.0.0"
 ```
@@ -68,6 +69,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 
 导入数据
 ------------
+
 ```
 yii migrate --migrationPath=@wsl/rbac/migrations
 ```
@@ -76,6 +78,7 @@ yii migrate --migrationPath=@wsl/rbac/migrations
 
 超级管理员帐号和密码
 ------------
+
 ```
 username: drupecms
 password: drupecms
@@ -119,10 +122,24 @@ class ExampleController extends \wsl\rbac\base\Controller
 ------------
 > 更多示例正在添加中...
 
-* [编写一个Hello World](docs/example/hello-world/hello-world.md)
-* [自定义命名空间](docs/example/custom-namespace/custom-namespace.md)
+- [编写一个Hello World](docs/example/hello-world/hello-world.md)
+- [自定义命名空间](docs/example/custom-namespace/custom-namespace.md)
 
 **正在编写**
-* 目录结构说明
-* 使用已封装CRUD
-* 扩展功能
+
+- 目录结构说明
+- 使用已封装CRUD
+- 扩展功能
+
+更新日志
+------------
+
+### Version 1.0.3 (2015.12.08)
+
+- 兼容PHP5.4+
+- 新增自定义静态文件路径
+- 新增底部工具栏添加debug调试按钮
+- 修复高级搜索状态切换bug
+
+
+
