@@ -32,12 +32,7 @@
 > 此处以命名空间`MDP`为例
 
 ```javascript
-Ext.Loader.setConfig({
-    enable: true,
-    paths: {
-        'DP': extJsConfig['extendPath']
-    }
-});
+Ext.Loader.setPath('DP', extJsConfig['extendPath']);
 Ext.application({
     name: 'MDP',
 
