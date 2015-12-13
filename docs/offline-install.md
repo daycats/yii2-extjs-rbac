@@ -64,5 +64,5 @@ return array (
 );
 ```
 
-完成后 [扩展配置](../README.md#配置)
+完成后 [扩展配置](../README.md#2配置)
 
