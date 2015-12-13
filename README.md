@@ -145,6 +145,7 @@ class ExampleController extends \wsl\rbac\base\Controller
 
 - [编写一个Hello World](docs/example/hello-world/hello-world.md)
 - [自定义命名空间](docs/example/custom-namespace/custom-namespace.md)
+- [自定义登录页面](docs/example/custom-namespace/custom-login-page.md)
 
 **正在编写**
 
@@ -168,6 +169,7 @@ demo地址: http://backend.yii.drupecms.com/
 ### Version 1.0.4 (2015.12.13)
 
 - 修复Ubuntu下通过Windows共享目录无法建立符号连接
+- 添加公共路由配置
 
 ### Version 1.0.3 (2015.12.08)
 
