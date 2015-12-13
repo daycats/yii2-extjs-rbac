@@ -22,7 +22,7 @@
 
 `backend/controllers/SiteController.php`
 
-```
+```php
 <?php
 
 namespace backend\controllers;
