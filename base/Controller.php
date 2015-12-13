@@ -14,6 +14,7 @@ use wsl\rbac\models\DpAdminMenuUrl;
 use wsl\rbac\models\DpAdminUserMenuRelation;
 use wsl\rbac\models\DpConfig;
 use Yii;
+use yii\base\NotSupportedException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
@@ -92,24 +93,37 @@ class Controller extends \yii\web\Controller
         if (!is_dir($extJsDstUpDir)) {
             @rmdir($extJsDstUpDir);
             if (!is_dir($extJsDstUpDir)) {
+                if (!is_writeable(dirname($extJsDstUpDir))) {
+                    throw new NotSupportedException('path: ' . dirname($extJsDstUpDir) . '目录没有写入权限');
+                }
                 FileHelper::createDirectory($extJsDstUpDir);
             }
         }
+
         $extJsExtendDstUpDir = dirname($extJsExtendDstDir);
         if (!is_dir($extJsExtendDstUpDir)) {
             @rmdir($extJsExtendDstUpDir);
             if (!is_dir($extJsExtendDstUpDir)) {
+                if (!is_writeable(dirname($extJsExtendDstUpDir))) {
+                    throw new NotSupportedException('path: ' . dirname($extJsExtendDstUpDir) . '目录没有写入权限');
+                }
                 FileHelper::createDirectory($extJsExtendDstUpDir);
             }
         }
         // js目录创建符号连接
         if (!is_dir($extJsDstDir)) {
             if (!@symlink($extJsSrcDir, $extJsDstDir)) {
+                if (!is_writeable($extJsDstUpDir)) {
+                    throw new NotSupportedException('path: ' . $extJsDstUpDir . '目录没有写入权限');
+                }
                 FileHelper::copyDirectory($extJsSrcDir, $extJsDstDir);
             }
         }
         if (!is_dir($extJsExtendDstDir)) {
             if (!@symlink($extJsSrcExtendDir, $extJsExtendDstDir)) {
+                if (!is_writeable($extJsExtendDstUpDir)) {
+                    throw new NotSupportedException('path: ' . $extJsDstUpDir . '目录没有写入权限');
+                }
                 FileHelper::copyDirectory($extJsSrcExtendDir, $extJsExtendDstDir);
             }
         }
