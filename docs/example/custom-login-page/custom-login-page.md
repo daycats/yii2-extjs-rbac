@@ -6,7 +6,7 @@
 ```php
 'controllerMap' => [
     ...
-    'site' => '\backend\controllers\SiteController', // 自定义的控制器完成类名
+    'site' => '\backend\controllers\SiteController', // 自定义的控制器完整类名
 ],
 ```
 
