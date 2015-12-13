@@ -93,10 +93,11 @@ class Controller extends \yii\web\Controller
         if (!is_dir($extJsDstUpDir)) {
             @rmdir($extJsDstUpDir);
             if (!is_dir($extJsDstUpDir)) {
-                if (!is_writeable(dirname($extJsDstUpDir))) {
-                    throw new NotSupportedException('path: ' . dirname($extJsDstUpDir) . '目录没有写入权限');
+                if (!@FileHelper::createDirectory($extJsDstUpDir)) {
+                    if (!is_writeable(dirname($extJsDstUpDir))) {
+                        throw new NotSupportedException('path: ' . dirname($extJsDstUpDir) . '目录没有写入权限');
+                    }
                 }
-                FileHelper::createDirectory($extJsDstUpDir);
             }
         }
 
@@ -104,10 +105,11 @@ class Controller extends \yii\web\Controller
         if (!is_dir($extJsExtendDstUpDir)) {
             @rmdir($extJsExtendDstUpDir);
             if (!is_dir($extJsExtendDstUpDir)) {
-                if (!is_writeable(dirname($extJsExtendDstUpDir))) {
-                    throw new NotSupportedException('path: ' . dirname($extJsExtendDstUpDir) . '目录没有写入权限');
+                if (!@FileHelper::createDirectory($extJsExtendDstUpDir)) {
+                    if (!is_writeable(dirname($extJsExtendDstUpDir))) {
+                        throw new NotSupportedException('path: ' . dirname($extJsExtendDstUpDir) . '目录没有写入权限');
+                    }
                 }
-                FileHelper::createDirectory($extJsExtendDstUpDir);
             }
         }
         // js目录创建符号连接
