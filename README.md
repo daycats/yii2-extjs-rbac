@@ -38,7 +38,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 
 
-如果无法通过`composer`安装可以下载离线包 [离线包安装向导](docs/baidu-yun-install.md)
+如果无法通过`composer`安装可以下载离线包 [离线包安装向导](docs/offline-install.md)
 
 ## 2、配置
 

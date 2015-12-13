@@ -1,4 +1,4 @@
-百度网盘安装方法
+离线安装方法
 =========
 
 > 安装过程出现任何问题可以加QQ群讨论
@@ -61,6 +61,7 @@ return array (
       '@wsl/rbac' => $vendorDir . '/myweishanli/yii2-extjs-rbac',
     ),
   ),
+);
 ```
 
 完成后 [扩展配置](../README.md#配置)
