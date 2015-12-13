@@ -18,7 +18,6 @@ use yii\base\NotSupportedException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
-use yii\helpers\VarDumper;
 use yii\web\Response;
 
 /**
@@ -77,12 +76,13 @@ class Controller extends \yii\web\Controller
     {
         parent::init();
         // 默认配置
-        $this->extJs['path'] = ArrayHelper::getValue($this->extJs, 'path', '/dp/extjs');
-        $this->extJs['extendPath'] = ArrayHelper::getValue($this->extJs, 'extendPath', '/dp/extjs-extend');
-        $this->extJs['appJsPath'] = ArrayHelper::getValue($this->extJs, 'appJsPath', $this->extJs['extendPath'] . '/app.js');
-        $this->extJs['bootstrapJsPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsPath', $this->extJs['extendPath'] . '/bootstrap.js');
-        $this->extJs['bootstrapJsonPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsonPath', $this->extJs['extendPath'] . '/bootstrap.json');
-        $this->extJs['bootstrapCssPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapCssPath', $this->extJs['path'] . '/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css');
+        $this->extJs['path'] = ArrayHelper::getValue($this->extJs, 'path', Yii::getAlias('@web/dp/extjs/'));
+        $this->extJs['extendPath'] = ArrayHelper::getValue($this->extJs, 'extendPath', Yii::getAlias('@web/dp/extjs-extend/'));
+        $this->extJs['appJsPath'] = ArrayHelper::getValue($this->extJs, 'appJsPath', $this->extJs['extendPath'] . 'app.js');
+        $this->extJs['bootstrapJsPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsPath', $this->extJs['extendPath'] . 'bootstrap.js');
+        $this->extJs['bootstrapJsonPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsonPath', $this->extJs['extendPath'] . 'bootstrap.json');
+        $this->extJs['bootstrapCssPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapCssPath', $this->extJs['path'] . 'packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css');
+
         // js路径
         $extJsSrcDir = Yii::getAlias($this->srcExtJsDir);
         $extJsSrcExtendDir = Yii::getAlias($this->srcExtJsExtendDir);
