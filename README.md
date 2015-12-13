@@ -22,7 +22,7 @@ fork 参与开发，欢迎提交 Pull Requests，然后 Pull Request
 
 ---
 
-## 安装
+## 1、安装
 
 安装这个扩展的首选方式是通过 [composer](http://getcomposer.org/download/).
 
@@ -40,7 +40,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 
 如果无法通过`composer`安装可以下载离线包 [离线包安装向导](docs/baidu-yun-install.md)
 
-## 配置
+## 2、配置
 
 `@app/config/main.php`
 
@@ -75,7 +75,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ]
 ```
 
-## 导入数据
+## 3、导入数据
 
 ```
 yii migrate --migrationPath=@wsl/rbac/migrations
