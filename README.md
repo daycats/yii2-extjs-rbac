@@ -2,6 +2,9 @@ Yii2 ExtJs5 RBAC
 =========
 支持ACL+RBAC
 
+[![Latest Stable Version](https://poser.pugx.org/myweishanli/yii2-extjs-rbac/v/stable.png)](https://packagist.org/packages/yiisoft/yii2)
+[![Total Downloads](https://poser.pugx.org/myweishanli/yii2-extjs-rbac/downloads.png)](https://packagist.org/packages/yiisoft/yii2)
+
 > 注: 功能正在开发中...
 
 > 更详细的配置说明文档正在编写中...
