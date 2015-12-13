@@ -104,12 +104,14 @@ class Controller extends \yii\web\Controller
         }
         // js目录创建符号连接
         if (!is_dir($extJsDstDir)) {
-            @rmdir($extJsDstDir);
-            symlink($extJsSrcDir, $extJsDstDir);
+            if (!@symlink($extJsSrcDir, $extJsDstDir)) {
+                FileHelper::copyDirectory($extJsSrcDir, $extJsDstDir);
+            }
         }
         if (!is_dir($extJsExtendDstDir)) {
-            @rmdir($extJsExtendDstDir);
-            symlink($extJsSrcExtendDir, $extJsExtendDstDir);
+            if (!@symlink($extJsSrcExtendDir, $extJsExtendDstDir)) {
+                FileHelper::copyDirectory($extJsSrcExtendDir, $extJsExtendDstDir);
+            }
         }
 
         $data = DpConfig::find()->all();
