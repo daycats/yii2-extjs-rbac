@@ -10,6 +10,15 @@ Yii2 ExtJs5 RBAC
 
 > 有任何疑问可以发邮件到 myweishanli@gmail.com
 
+---
+有任何建议或者需求欢迎来反馈 [issues](issues)
+
+欢迎点击右上方的 star 收藏
+
+fork 参与开发，欢迎提交 Pull Requests，然后 Pull Request
+
+---
+
 ## 安装
 
 安装这个扩展的首选方式是通过 [composer](http://getcomposer.org/download/).
@@ -26,7 +35,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 
 
-如果无法通过`composer`安装可以下载离线包 [百度网盘安装向导](docs/baidu-yun-install.md)
+如果无法通过`composer`安装可以下载离线包 [离线包安装向导](docs/baidu-yun-install.md)
 
 ## 配置
 
