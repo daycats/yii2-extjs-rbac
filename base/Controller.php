@@ -50,6 +50,10 @@ class Controller extends \yii\web\Controller
      *```
      */
     public $extJs = [];
+    /**
+     * @var array 路由白名单
+     */
+    public $publicRoute = [];
 
     /**
      * @var int 最大页码限制
@@ -156,13 +160,13 @@ class Controller extends \yii\web\Controller
                     $groupMenuIdList = DpAdminGroup::getMenuIdArrByGroupIdArr($this->identity->getGroupIdArr());
                 }
                 $this->menuIdList = array_merge($userMenuIdList, $groupMenuIdList);
-                $routeWhiteList = [
+                $publicRoute = [
                     '',
                     'admin/common/tree',
                     'admin/common/urls',
                     'admin/public/logout',
                 ];
-                $allowAccess = in_array($route, $routeWhiteList);
+                $allowAccess = in_array($route, $publicRoute);
                 if (!$allowAccess) {
                     $queryParams = Yii::$app->request->queryParams;
                     $method = Yii::$app->request->method;
@@ -212,22 +216,25 @@ class Controller extends \yii\web\Controller
                 return parent::beforeAction($action);
             }
         } else {
-            $routeWhiteList = [
+            $publicRoute = array_merge([
                 '',
                 'admin/public/login',
                 'admin/public/logout',
-            ];
-            $allowAccess = in_array($route, $routeWhiteList);
+            ], $this->publicRoute);
+            $allowAccess = in_array($route, $publicRoute);
             if (!$allowAccess) {
-                // 未登录
-                $response = Yii::$app->response;
-                $response->format = Response::FORMAT_JSON;
-                $response->data = [
-                    'success' => false,
-                    'msg' => '请先登录系统',
-                    'code' => 1,
-                ];
-                return false;
+                if (!Yii::$app->getErrorHandler()->exception) {
+                    // 未登录
+                    $response = Yii::$app->response;
+                    $response->format = Response::FORMAT_JSON;
+                    $response->data = [
+                        'success' => false,
+                        'msg' => '请先登录系统',
+                        'code' => 1,
+                    ];
+
+                    return false;
+                }
             }
         }
 
