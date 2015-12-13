@@ -145,7 +145,7 @@ class ExampleController extends \wsl\rbac\base\Controller
 
 - [编写一个Hello World](docs/example/hello-world/hello-world.md)
 - [自定义命名空间](docs/example/custom-namespace/custom-namespace.md)
-- [自定义登录页面](docs/example/custom-namespace/custom-login-page.md)
+- [自定义登录页面](docs/example/custom-login-page/custom-login-page.md)
 
 **正在编写**
 
