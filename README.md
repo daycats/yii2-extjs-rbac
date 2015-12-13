@@ -10,8 +10,7 @@ Yii2 ExtJs5 RBAC
 
 > 有任何疑问可以发邮件到 myweishanli@gmail.com
 
-安装
-------------
+## 安装
 
 安装这个扩展的首选方式是通过 [composer](http://getcomposer.org/download/).
 
@@ -27,12 +26,9 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 
 
-如果无法通过`composer`安装可以下载离线包 百度网盘 http://pan.baidu.com/s/1bonLAph#path=/yii2-extjs-rbac
+如果无法通过`composer`安装可以下载离线包 [百度网盘向导](docs/baidu-yun-install.md)
 
-安装包下载到项目根目录解压到当前文件夹即可
-
-配置
-------------
+## 配置
 
 `@app/config/main.php`
 
@@ -67,8 +63,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ]
 ```
 
-导入数据
-------------
+## 导入数据
 
 ```
 yii migrate --migrationPath=@wsl/rbac/migrations
@@ -76,16 +71,15 @@ yii migrate --migrationPath=@wsl/rbac/migrations
 
 完成`配置`和`导入数据`即可访问
 
-超级管理员帐号和密码
-------------
+## 超级管理员帐号和密码
 
 ```
 username: drupecms
 password: drupecms
 ```
 
-控制器
-------------
+## 控制器
+
 新建的`Controller`需要继承`\wsl\rbac\base\Controller`
 
 ```php
@@ -94,8 +88,7 @@ class ExampleController extends \wsl\rbac\base\Controller
 }
 ```
 
-自定义配置
-------------
+## 自定义配置
 
 ```
 'controllerMap' => [
@@ -118,8 +111,8 @@ class ExampleController extends \wsl\rbac\base\Controller
 
 > 注: 每次升级记住执行`yii migrate --migrationPath=@wsl/rbac/migrations`
 
-示例:
-------------
+## 示例
+
 > 更多示例正在添加中...
 
 - [编写一个Hello World](docs/example/hello-world/hello-world.md)
@@ -131,8 +124,7 @@ class ExampleController extends \wsl\rbac\base\Controller
 - 使用已封装CRUD
 - 扩展功能
 
-更新日志
-------------
+## 更新日志
 
 ### Version 1.0.3 (2015.12.08)
 
