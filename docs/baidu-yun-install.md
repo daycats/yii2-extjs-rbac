@@ -14,9 +14,9 @@
 ```
 vendor/                  
     composer/
-        autoload_psr4.php
+        autoload_psr4.php       // composer自动加载配置
     yiisoft/
-        extensions.php
+        extensions.php          // Yii扩展配置
 ```
 
 `composer`自动加载配置
