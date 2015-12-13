@@ -11,7 +11,7 @@ Yii2 ExtJs5 RBAC
 > 有任何疑问可以发邮件到 myweishanli@gmail.com
 
 ---
-有任何建议或者需求欢迎来反馈 [issues](issues)
+有任何建议或者需求欢迎来反馈 [issues](../../issues)
 
 欢迎点击右上方的 star 收藏
 
