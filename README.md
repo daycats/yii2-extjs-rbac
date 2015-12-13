@@ -22,7 +22,8 @@ fork 参与开发，欢迎提交 Pull Requests，然后 Pull Request
 
 ---
 
-## 1、安装
+1、安装
+------------
 
 安装这个扩展的首选方式是通过 [composer](http://getcomposer.org/download/).
 
@@ -40,7 +41,8 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 
 如果无法通过`composer`安装可以下载离线包 [离线包安装向导](docs/offline-install.md)
 
-## 2、配置
+2、配置
+------------
 
 `@app/config/main.php`
 
@@ -80,7 +82,8 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 
 ![](docs/images/config-preview.png)
 
-## 3、导入数据
+3、导入数据
+------------
 
 ```
 yii migrate --migrationPath=@wsl/rbac/migrations
@@ -90,14 +93,16 @@ yii migrate --migrationPath=@wsl/rbac/migrations
 
 > 如果提示目录创建失败请设置`@app/web`为777权限
 
-## 超级管理员帐号和密码
+超级管理员帐号和密码
+------------
 
 ```
 username: drupecms
 password: drupecms
 ```
 
-## 控制器
+控制器
+------------
 
 新建的`Controller`需要继承`\wsl\rbac\base\Controller`
 
@@ -107,7 +112,8 @@ class ExampleController extends \wsl\rbac\base\Controller
 }
 ```
 
-## 自定义配置
+自定义配置
+------------
 
 ```
 'controllerMap' => [
@@ -130,7 +136,8 @@ class ExampleController extends \wsl\rbac\base\Controller
 
 > 注: 每次升级记住执行`yii migrate --migrationPath=@wsl/rbac/migrations`
 
-## 示例
+示例
+------------
 
 > 更多示例正在添加中...
 
@@ -143,7 +150,8 @@ class ExampleController extends \wsl\rbac\base\Controller
 - 使用已封装CRUD
 - 扩展功能
 
-## Demo
+Demo
+------------
 
 demo地址: http://backend.yii.drupecms.com/
 
@@ -152,7 +160,8 @@ demo地址: http://backend.yii.drupecms.com/
 密码: drupecms
 
 
-## 更新日志
+更新日志
+------------
 
 ### Version 1.0.4 (2015.12.13)
 
@@ -164,6 +173,3 @@ demo地址: http://backend.yii.drupecms.com/
 - 新增自定义静态文件路径
 - 新增底部工具栏添加debug调试按钮
 - 修复高级搜索状态切换bug
-
-
-
