@@ -154,6 +154,10 @@ demo地址: http://backend.yii.drupecms.com/
 
 ## 更新日志
 
+### Version 1.0.4 (2015.12.13)
+
+- 修复Ubuntu下通过Windows共享目录无法建立符号连接
+
 ### Version 1.0.3 (2015.12.08)
 
 - 兼容PHP5.4+
