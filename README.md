@@ -1,5 +1,6 @@
 Yii2 ExtJs5 RBAC
 =========
+
 支持ACL+RBAC
 
 github: https://github.com/myweishanli/yii2-extjs-rbac
@@ -57,25 +58,19 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 
 ```php
 'modules' => [
+    // ...
     'admin' => '\wsl\rbac\modules\admin\Module',
-    ...
 ],
-```
-
-```php
 'controllerMap' => [
+    // ...
     'site' => '\wsl\rbac\controllers\SiteController',
-    ...
 ],
-```
-
-```php
 'components' => [
+    // ...
     'user' => [
         'identityClass' => 'wsl\rbac\models\DpAdminUser',
-        ...
+        // ...
     ],
-    ...
 ]
 ```
 
