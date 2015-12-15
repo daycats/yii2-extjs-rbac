@@ -157,6 +157,11 @@ demo地址: http://backend.yii.drupecms.com/
 
 密码: drupecms
 
+正在开发新功能
+------------
+- ip访问限制
+- 权限设置细化到每个url
+- gii代码生成器
 
 更新日志
 ------------
