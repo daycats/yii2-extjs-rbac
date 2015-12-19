@@ -16,6 +16,7 @@ github: https://github.com/myweishanli/yii2-extjs-rbac
 
 > 有任何疑问可以发邮件到 myweishanli@gmail.com
 
+
 ---
 有任何建议或者需求欢迎来反馈 [issues](../../issues)
 
@@ -30,9 +31,10 @@ fork 参与开发，欢迎提交 Pull Requests，然后 Pull Request
 
 安装这个扩展的首选方式是通过 [composer](http://getcomposer.org/download/).
 
-执行
+执行命令
 
 ```
+composer global require "fxp/composer-asset-plugin:~1.1.0"
 composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 或添加
