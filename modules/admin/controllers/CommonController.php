@@ -30,7 +30,7 @@ class CommonController extends Controller
      */
     public function actionTree()
     {
-        $tree = DpAdminMenu::getAccessTreeByParentId($this->identity->is_super, $this->menuIdList, 0, [
+        $tree = DpAdminMenu::getAccessTreeByParentId($this->identity->is_super, $this->menuIdList, null, [
             'is_hide' => 0,
         ]);
 
@@ -46,7 +46,7 @@ class CommonController extends Controller
      */
     public function actionUrls()
     {
-        $urls = DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, 0);
+        $urls = DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, null);
 
         $urls = array_merge($urls, [
             'admin.public.login' => Url::toRoute('/admin/public/login'),
@@ -74,7 +74,7 @@ class CommonController extends Controller
             'admin.menu-url-rule.save' => Url::toRoute('/admin/menu-url-rule/save'),
             'admin.menu-url-rule.update-status' => Url::toRoute('/admin/menu-url-rule/update-status'),
             'admin.menu-url-rule.del' => Url::toRoute('/admin/menu-url-rule/del'),
-        ], DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, 0));
+        ], DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, null));
 
         return [
             'data' => $urls,

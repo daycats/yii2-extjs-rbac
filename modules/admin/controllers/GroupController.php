@@ -82,7 +82,7 @@ class GroupController extends Controller
             'note',
             'status',
         ], [], 'menu_id DESC');
-        $tree = DpAdminMenu::getGroupMenuTreeByParentId($group_id, 0, $order);
+        $tree = DpAdminMenu::getGroupMenuTreeByParentId($group_id, null, $order);
 
         return [
             'children' => $tree,

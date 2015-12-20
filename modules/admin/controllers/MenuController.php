@@ -61,8 +61,8 @@ class MenuController extends Controller
             'display_order',
             'note',
             'status',
-        ], [], 'menu_id DESC');
-        $tree = DpAdminMenu::getTreeByParentId(0, '', [], $order);
+        ], [], 'display_order ASC,menu_id ASC');
+        $tree = DpAdminMenu::getTreeByParentId(null, '', [], $order);
 
         return [
             'children' => $tree,
@@ -94,7 +94,7 @@ class MenuController extends Controller
             'display_order',
             'note',
             'status',
-        ], [], 'menu_id DESC');
+        ], [], 'display_order ASC,menu_id ASC');
         $list = DpAdminMenu::find()->orderBy($order)->all();
 
         return [
@@ -127,6 +127,8 @@ class MenuController extends Controller
         $params = Yii::$app->request->post('params');
         $note = Yii::$app->request->post('note');
         $status = intval(Yii::$app->request->post('status'));
+
+        $parent_id = $parent_id ? $parent_id : null;
 
         if ($parent_id) {
             if ($parent_id == $menu_id) {
@@ -224,9 +226,9 @@ class MenuController extends Controller
     public function actionDrop()
     {
         $formModel = new DpAdminMenuForm();
-        $formModel->setScenario($formModel::SCENARIO_DRAG_SORT);
+        $formModel->setScenario($formModel::SCENARIO_UPDATE_SORT);
         if ($formModel->load(Yii::$app->request->post(), '')) {
-            if ($formModel->dragSort()) {
+            if ($formModel->updateSort()) {
                 return $this->renderSuccess('排序调整成功');
             }
             foreach ($formModel->errors as $field) {

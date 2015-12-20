@@ -23,7 +23,7 @@ class SiteController extends Controller
                 'isSuper' => $this->identity->is_super,
                 'groupName' => join(',', $groupNames),
             ];
-            $urls = DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, 0);
+            $urls = DpAdminMenu::getUrlsByParentId($this->identity->is_super, $this->menuIdList, null);
         }
 
         return $this->renderPartial('index', [

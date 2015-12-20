@@ -89,6 +89,13 @@ class DpAdminMenu extends ActiveRecord
 
     public function beforeSave($insert)
     {
+        if ($this->menu_id) {
+            if ($this->menu_id == $this->parent_id) {
+                $this->addError('parent_id', '禁止添加自己为父类');
+                return false;
+            }
+        }
+
         if (!is_numeric($this->display_order)) {
             $find = static::find()->findByParentId($this->parent_id);
             if ($this->menu_id) {
@@ -139,39 +146,37 @@ class DpAdminMenu extends ActiveRecord
      */
     public static function getTreeByParentId($parentId, $condition = '', $params = [], $order = 'display_order asc')
     {
-        $data = static::find()
-            ->normal()
+        $menuMode = static::find()
             ->findByParentId($parentId)
             ->andWhere($condition, $params)
             ->orderBy($order)
-            ->asArray()
             ->all();
         $tree = [];
-        if ($data) {
-            foreach ($data as $item) {
+        if ($menuMode) {
+            foreach ($menuMode as $itemModel) {
                 $node = [
-                    'menu_id' => $item['menu_id'],
-                    'parent_id' => $item['parent_id'],
-                    'tab_id' => 'tab_' . $item['menu_id'],
-                    'text' => $item['text'],
-                    'origin_text' => $item['text'],
-                    'title' => $item['title'],
-                    'url' => $item['url'],
-                    'view_package' => $item['view_package'],
-                    'expanded' => (bool) $item['expanded'],
-                    'closable' => (bool) $item['closable'],
-                    'is_folder' => (bool) $item['is_folder'],
-                    'is_expand' => (bool) $item['expanded'],
-                    'is_open_url' => (bool) $item['is_open_url'],
-                    'is_open_target' => (bool) $item['is_open_target'],
-                    'is_every_open' => (bool) $item['is_every_open'],
-                    'is_hide' => (bool) $item['is_hide'],
-                    'display_order' => $item['display_order'],
-                    'params' => $item['params'],
-                    'note' => $item['note'],
-                    'status' => intval($item['status']),
+                    'menu_id' => $itemModel['menu_id'],
+                    'parent_id' => $itemModel['parent_id'],
+                    'tab_id' => 'tab_' . $itemModel['menu_id'],
+                    'text' => $itemModel['text'],
+                    'origin_text' => $itemModel['text'],
+                    'title' => $itemModel['title'],
+                    'url' => $itemModel['url'],
+                    'view_package' => $itemModel['view_package'],
+                    'expanded' => (bool) $itemModel['expanded'],
+                    'closable' => (bool) $itemModel['closable'],
+                    'is_folder' => (bool) $itemModel['is_folder'],
+                    'is_expand' => (bool) $itemModel['expanded'],
+                    'is_open_url' => (bool) $itemModel['is_open_url'],
+                    'is_open_target' => (bool) $itemModel['is_open_target'],
+                    'is_every_open' => (bool) $itemModel['is_every_open'],
+                    'is_hide' => (bool) $itemModel['is_hide'],
+                    'display_order' => $itemModel['display_order'],
+                    'params' => $itemModel['params'],
+                    'note' => $itemModel['note'],
+                    'status' => intval($itemModel['status']),
                 ];
-                $children = static::getTreeByParentId($item['menu_id'], $condition, $params, $order);
+                $children = static::getTreeByParentId($itemModel['menu_id'], $condition, $params, $order);
                 if ($children) {
                     $node['leaf'] = false;
                     $node['children'] = $children;

@@ -60,7 +60,7 @@ class UserController extends Controller
             'note',
             'status',
         ], [], 'menu_id DESC');
-        $tree = DpAdminMenu::getUserMenuTreeByParentId($user_id, 0, $order);
+        $tree = DpAdminMenu::getUserMenuTreeByParentId($user_id, null, $order);
 
         return [
             'children' => $tree,

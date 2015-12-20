@@ -298,6 +298,17 @@ class DpAdminMenuQuery extends ActiveQuery
     }
 
     /**
+     * 默认排序
+     *
+     * @return $this
+     */
+    public function defaultOrder()
+    {
+        $this->orderBy('display_order asc,menu_id asc');
+        return $this;
+    }
+
+    /**
      * @inheritdoc
      * @return DpAdminMenu[]|array
      */
