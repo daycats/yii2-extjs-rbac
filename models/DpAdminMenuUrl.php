@@ -49,7 +49,8 @@ class DpAdminMenuUrl extends ActiveRecord
         return [
             [['name', 'alias', 'route'], 'required'],
             [['enable_rule', 'status'], 'integer'],
-            [['name', 'alias', 'route', 'method', 'host', 'note'], 'string', 'max' => 255]
+            [['name', 'alias', 'route', 'method', 'host', 'note'], 'string', 'max' => 255],
+            [['alias'], 'unique'],
         ];
     }
 
