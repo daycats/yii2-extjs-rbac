@@ -80,8 +80,8 @@ class Controller extends \yii\web\Controller
     {
         parent::init();
         // 默认配置
-        $this->extJs['path'] = ArrayHelper::getValue($this->extJs, 'path', Yii::getAlias('@web/dp/extjs/'));
-        $this->extJs['extendPath'] = ArrayHelper::getValue($this->extJs, 'extendPath', Yii::getAlias('@web/dp/extjs-extend/'));
+        $this->extJs['path'] = ArrayHelper::getValue($this->extJs, 'path', 'dp/extjs/');
+        $this->extJs['extendPath'] = ArrayHelper::getValue($this->extJs, 'extendPath', 'dp/extjs-extend/');
         $this->extJs['appJsPath'] = ArrayHelper::getValue($this->extJs, 'appJsPath', $this->extJs['extendPath'] . 'app.js');
         $this->extJs['bootstrapJsPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsPath', $this->extJs['extendPath'] . 'bootstrap.js');
         $this->extJs['bootstrapJsonPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsonPath', $this->extJs['extendPath'] . 'bootstrap.json');
@@ -96,11 +96,9 @@ class Controller extends \yii\web\Controller
         $extJsDstUpDir = dirname($extJsDstDir);
         if (!is_dir($extJsDstUpDir)) {
             @rmdir($extJsDstUpDir);
-            if (!is_dir($extJsDstUpDir)) {
-                if (!@FileHelper::createDirectory($extJsDstUpDir)) {
-                    if (!is_writeable(dirname($extJsDstUpDir))) {
-                        throw new NotSupportedException('path: ' . dirname($extJsDstUpDir) . '目录没有写入权限');
-                    }
+            if (!@FileHelper::createDirectory($extJsDstUpDir)) {
+                if (!is_writeable(dirname($extJsDstUpDir))) {
+                    throw new NotSupportedException('path: ' . dirname($extJsDstUpDir) . '目录没有写入权限');
                 }
             }
         }
@@ -108,11 +106,9 @@ class Controller extends \yii\web\Controller
         $extJsExtendDstUpDir = dirname($extJsExtendDstDir);
         if (!is_dir($extJsExtendDstUpDir)) {
             @rmdir($extJsExtendDstUpDir);
-            if (!is_dir($extJsExtendDstUpDir)) {
-                if (!@FileHelper::createDirectory($extJsExtendDstUpDir)) {
-                    if (!is_writeable(dirname($extJsExtendDstUpDir))) {
-                        throw new NotSupportedException('path: ' . dirname($extJsExtendDstUpDir) . '目录没有写入权限');
-                    }
+            if (!@FileHelper::createDirectory($extJsExtendDstUpDir)) {
+                if (!is_writeable(dirname($extJsExtendDstUpDir))) {
+                    throw new NotSupportedException('path: ' . dirname($extJsExtendDstUpDir) . '目录没有写入权限');
                 }
             }
         }
