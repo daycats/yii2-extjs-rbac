@@ -80,8 +80,8 @@ class Controller extends \yii\web\Controller
     {
         parent::init();
         // 默认配置
-        $this->extJs['path'] = ArrayHelper::getValue($this->extJs, 'path', 'dp/extjs/');
-        $this->extJs['extendPath'] = ArrayHelper::getValue($this->extJs, 'extendPath', 'dp/extjs-extend/');
+        $this->extJs['path'] = ArrayHelper::getValue($this->extJs, 'path', 'assets/dp/extjs/');
+        $this->extJs['extendPath'] = ArrayHelper::getValue($this->extJs, 'extendPath', 'assets/dp/extjs-extend/');
         $this->extJs['appJsPath'] = ArrayHelper::getValue($this->extJs, 'appJsPath', $this->extJs['extendPath'] . 'app.js');
         $this->extJs['bootstrapJsPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsPath', $this->extJs['extendPath'] . 'bootstrap.js');
         $this->extJs['bootstrapJsonPath'] = ArrayHelper::getValue($this->extJs, 'bootstrapJsonPath', $this->extJs['extendPath'] . 'bootstrap.json');
