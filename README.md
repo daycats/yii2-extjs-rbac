@@ -1,6 +1,5 @@
 Yii2 ExtJs5 RBAC
 =========
-
 支持ACL+RBAC
 
 github: https://github.com/myweishanli/yii2-extjs-rbac
@@ -16,7 +15,6 @@ github: https://github.com/myweishanli/yii2-extjs-rbac
 
 > 有任何疑问可以发邮件到 myweishanli@gmail.com
 
-
 ---
 有任何建议或者需求欢迎来反馈 [issues](../../issues)
 
@@ -31,10 +29,9 @@ fork 参与开发，欢迎提交 Pull Requests，然后 Pull Request
 
 安装这个扩展的首选方式是通过 [composer](http://getcomposer.org/download/).
 
-执行命令
+执行
 
 ```
-composer global require "fxp/composer-asset-plugin:~1.1.0"
 composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 或添加
@@ -60,19 +57,25 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 
 ```php
 'modules' => [
-    // ...
     'admin' => '\wsl\rbac\modules\admin\Module',
+    ...
 ],
+```
+
+```php
 'controllerMap' => [
-    // ...
     'site' => '\wsl\rbac\controllers\SiteController',
+    ...
 ],
+```
+
+```php
 'components' => [
-    // ...
     'user' => [
         'identityClass' => 'wsl\rbac\models\DpAdminUser',
-        // ...
+        ...
     ],
+    ...
 ]
 ```
 
@@ -159,18 +162,9 @@ demo地址: http://backend.yii.drupecms.com/
 
 密码: drupecms
 
-正在开发新功能
-------------
-- ip访问限制
-- 权限设置细化到每个url
-- gii代码生成器
 
 更新日志
 ------------
-
-### Version Dev Master
-
-- 修复拖拽菜单排序
 
 ### Version 1.0.4 (2015.12.13)
 
