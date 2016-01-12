@@ -168,9 +168,10 @@ demo地址: http://backend.yii.drupecms.com/
 更新日志
 ------------
 
-### Version Dev Master
+### Version 1.0.5 (2016.1.12)
 
 - 修复拖拽菜单排序
+- 兼容非web目录访问
 
 ### Version 1.0.4 (2015.12.13)
 
