@@ -12,6 +12,8 @@ class m160112_033837_add_menu_data extends Migration
                 'name' => '菜单拖拽排序',
                 'alias' => 'admin.menu.drop',
                 'route' => '/admin/menu/drop',
+                'host' => '',
+                'note' => '',
                 'method' => 'POST',
                 'status' => 1,
             ])
