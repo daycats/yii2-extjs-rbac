@@ -8,6 +8,22 @@ github: https://github.com/myweishanli/yii2-extjs-rbac
 [![Latest Stable Version](https://poser.pugx.org/myweishanli/yii2-extjs-rbac/v/stable.png)](https://packagist.org/packages/myweishanli/yii2-extjs-rbac)
 [![Total Downloads](https://poser.pugx.org/myweishanli/yii2-extjs-rbac/downloads.png)](https://packagist.org/packages/myweishanli/yii2-extjs-rbac)
 
+
+##### 当前版本: 1.0.5
+
+| Web | UI  | Preview  |
+|:-------------:|:-------:|:-------:|
+|加载页面|加载完成|管理员帐号|
+|![加载页面](docs/images/1.png)|![加载完成](docs/images/2.png)|![管理员帐号](docs/images/3.png)|
+|高级搜索|编辑帐号|用户组管理|
+|![高级搜索](docs/images/4.png)|![编辑帐号](docs/images/5.png)|![用户组管理](docs/images/6.png)|
+|编辑用户组管理|菜单管理|菜单管理URL管理|
+|![编辑用户组管理](docs/images/7.png)|![菜单管理](docs/images/8.png)|![菜单管理URL管理](docs/images/9.png)|
+|编辑菜单管理URL|编辑菜单管理URL规则|系统配置|
+|![编辑菜单管理URL](docs/images/10.png)|![编辑菜单管理URL规则](docs/images/11.png)|![系统配置](docs/images/12.png)|
+
+[更多预览图](docs/preview.md)
+
 > 注: 功能正在开发中...
 
 > 更详细的配置说明文档正在编写中...
@@ -130,8 +146,6 @@ class ExampleController extends \wsl\rbac\base\Controller
     ...
 ],
 ```
-
-[预览图](docs/preview.md)
 
 > 注: 每次升级记住执行`yii migrate --migrationPath=@wsl/rbac/migrations`
 
