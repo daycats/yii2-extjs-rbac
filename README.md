@@ -9,8 +9,6 @@ github: https://github.com/myweishanli/yii2-extjs-rbac
 [![Total Downloads](https://poser.pugx.org/myweishanli/yii2-extjs-rbac/downloads.png)](https://packagist.org/packages/myweishanli/yii2-extjs-rbac)
 
 
-##### 当前版本: 1.0.5
-
 | Web | UI  | Preview  |
 |:-------------:|:-------:|:-------:|
 |加载页面|加载完成|管理员帐号|
