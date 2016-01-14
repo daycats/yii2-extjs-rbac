@@ -8,6 +8,13 @@ github: https://github.com/myweishanli/yii2-extjs-rbac
 [![Latest Stable Version](https://poser.pugx.org/myweishanli/yii2-extjs-rbac/v/stable.png)](https://packagist.org/packages/myweishanli/yii2-extjs-rbac)
 [![Total Downloads](https://poser.pugx.org/myweishanli/yii2-extjs-rbac/downloads.png)](https://packagist.org/packages/myweishanli/yii2-extjs-rbac)
 
+> 注: 功能正在开发中...
+
+> 更详细的配置说明文档正在编写中...
+
+> QQ群: 137158108 验证信息: github
+
+> 有任何疑问可以发邮件到 myweishanli@gmail.com
 
 | Web | UI  | Preview  |
 |:-------------:|:-------:|:-------:|
@@ -21,15 +28,6 @@ github: https://github.com/myweishanli/yii2-extjs-rbac
 |![编辑菜单管理URL](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/10.png?raw=true)|![编辑菜单管理URL规则](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/11.png?raw=true)|![系统配置](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/12.png?raw=true)|
 
 [更多预览图](docs/preview.md)
-
-> 注: 功能正在开发中...
-
-> 更详细的配置说明文档正在编写中...
-
-> QQ群: 137158108 验证信息: github
-
-> 有任何疑问可以发邮件到 myweishanli@gmail.com
-
 
 ---
 有任何建议或者需求欢迎来反馈 [issues](../../issues)
