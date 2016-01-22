@@ -91,7 +91,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 配置预览
 ---------
 
-![](docs/images/config-preview.png)
+![](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/config-preview.png?raw=true)
 
 3、导入数据
 ------------
