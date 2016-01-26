@@ -160,15 +160,6 @@ class ExampleController extends \wsl\rbac\base\Controller
 - 使用已封装CRUD
 - 扩展功能
 
-Demo
-------------
-
-demo地址: http://backend.yii.drupecms.com/
-
-帐号: drupecms
-
-密码: drupecms
-
 正在开发新功能
 ------------
 - ip访问限制
