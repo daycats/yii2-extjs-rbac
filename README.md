@@ -145,8 +145,20 @@ class ExampleController extends \wsl\rbac\base\Controller
 
 > 注: 每次升级记住执行`yii migrate --migrationPath=@wsl/rbac/migrations`
 
-示例
-------------
+
+## 捐赠
+
+![微信支付](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/wechat-pay.png?raw=true)
+
+或者
+
+![支付宝支付](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/ali-pay.png?raw=true)
+
+手机微信或者支付宝扫描上方二维码可向本项目捐款
+
+所得捐赠将用于改善网站服务器、购买开发/调试设备&工具。
+
+## 示例
 
 > 更多示例正在添加中...
 
