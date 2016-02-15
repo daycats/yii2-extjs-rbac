@@ -45,13 +45,13 @@ fork 参与开发，欢迎提交 Pull Requests，然后 Pull Request
 
 执行命令
 
-```
+```bash
 composer global require "fxp/composer-asset-plugin:~1.1.0"
 composer require --prefer-dist myweishanli/yii2-extjs-rbac
 ```
 或添加
 
-```
+```json
 "myweishanli/yii2-extjs-rbac": "~1.0.0"
 ```
 
@@ -96,7 +96,7 @@ composer require --prefer-dist myweishanli/yii2-extjs-rbac
 3、导入数据
 ------------
 
-```
+```bash
 yii migrate --migrationPath=@wsl/rbac/migrations
 ```
 
@@ -126,7 +126,7 @@ class ExampleController extends \wsl\rbac\base\Controller
 自定义配置
 ------------
 
-```
+```php
 'controllerMap' => [
     'site' => [
         'class' => '\wsl\rbac\controllers\SiteController',
