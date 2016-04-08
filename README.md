@@ -166,6 +166,8 @@ class ExampleController extends \wsl\rbac\base\Controller
 - [自定义命名空间](docs/example/custom-namespace/custom-namespace.md)
 - [自定义登录页面](docs/example/custom-login-page/custom-login-page.md)
 
+建议反馈: https://www.drupecms.com/blog/yii2-extjs-rbac/article/141
+
 **正在编写**
 
 - 目录结构说明
