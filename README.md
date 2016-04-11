@@ -148,9 +148,13 @@ class ExampleController extends \wsl\rbac\base\Controller
 
 ## 捐赠
 
+**微信**
+
 ![微信支付](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/wechat-pay.png?raw=true)
 
 或者
+
+**支付宝**
 
 ![支付宝支付](https://github.com/myweishanli/yii2-extjs-rbac/blob/master/docs/images/ali-pay.png?raw=true)
 
