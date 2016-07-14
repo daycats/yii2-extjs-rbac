@@ -102,7 +102,7 @@ yii migrate --migrationPath=@wsl/rbac/migrations
 
 完成`配置`和`导入数据`即可访问
 
-> 如果提示目录创建失败请设置`@app/web`为777权限
+> 注意：windows系统Apache或者集成环境XAMPP、WAMP请使用 以管理员身份运行，否则会出现一直加载中的情况（如果非管理员访问过请删除backend\web\assets\dp目录）
 
 超级管理员帐号和密码
 ------------
