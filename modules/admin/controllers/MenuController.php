@@ -191,12 +191,18 @@ class MenuController extends Controller
                 ->asArray()
                 ->all();
             foreach ($users as $user) {
-                $linkObj = new DpAdminUserMenuRelation();
-                $linkObj->setAttributes([
+                $relationExists = DpAdminUserMenuRelation::find()->andWhere([
                     'user_id' => $user['user_id'],
                     'menu_id' => $obj->menu_id,
-                ]);
-                $linkObj->save();
+                ])->exists();
+				if (!$relationExists) {
+					$linkObj = new DpAdminUserMenuRelation();
+					$linkObj->setAttributes([
+						'user_id' => $user['user_id'],
+						'menu_id' => $obj->menu_id,
+					]);
+					$linkObj->save();
+				}
             }
         }
         // 自动给系统用户组添加菜单权限
@@ -206,12 +212,18 @@ class MenuController extends Controller
                 ->asArray()
                 ->all();
             foreach ($groups as $group) {
-                $linkObj = new DpAdminGroupMenuRelation();
-                $linkObj->setAttributes([
-                    'group_id' => $group['group_id'],
-                    'menu_id' => $obj->menu_id,
-                ]);
-                $linkObj->save();
+                $relationExists = DpAdminGroupMenuRelation::find()->andWhere([
+					'group_id' => $group['group_id'],
+					'menu_id' => $obj->menu_id,
+                ])->exists();
+				if (!$relationExists) {
+					$linkObj = new DpAdminGroupMenuRelation();
+					$linkObj->setAttributes([
+						'group_id' => $group['group_id'],
+						'menu_id' => $obj->menu_id,
+					]);
+					$linkObj->save();
+				}
             }
         }
 
